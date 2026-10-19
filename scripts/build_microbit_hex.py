@@ -1,16 +1,16 @@
 """產生 micro:bit V1 用的 .hex（MicroPython v1.0.1，記憶體比網頁版多）。
+腳位依 config/hardware.json 的 pins 寫進程式裡；改了腳位就重新執行一次。
 
     uv run python scripts/build_microbit_hex.py
 
-main.py 的中文註解很長，超過 .hex 能放的 8KB，所以先拿掉註解和空行再打包；
-原始的 firmware/microbit/main.py 保留註解給學生看。
+V1 只有 16KB 記憶體，連「把程式編譯起來」都會不夠（MemoryError）。
+所以打包前用 python-minifier 拿掉註解、把變數名稱縮短（省下存名稱的記憶體）；
+原始的 firmware/microbit/main.py 保留完整註解給學生看。
 """
 
-import io
 import subprocess
 import sys
 import tempfile
-import tokenize
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,16 +18,38 @@ SRC = ROOT / "firmware" / "microbit" / "main.py"
 OUT = ROOT / "firmware" / "microbit" / "fitwell-microbit-v1.hex"
 
 
-def strip_comments(code: str) -> str:
-    toks = [t for t in tokenize.generate_tokens(io.StringIO(code).readline) if t.type != tokenize.COMMENT]
-    out = tokenize.untokenize(toks)
-    return "\n".join(line.rstrip() for line in out.splitlines() if line.strip()) + "\n"
+def minify(path: Path) -> str:
+    out = subprocess.run(
+        ["uv", "tool", "run", "--from", "python-minifier==3.4.0", "pyminify",
+         "--rename-globals", "--no-hoist-literals", "--remove-literal-statements", str(path)],
+        check=True, capture_output=True, text=True,
+    ).stdout
+    return out
+
+
+PIN_LINE = "P = [pin0, pin1, pin2, pin13, pin14, pin12, pin16, pin4, pin10]"
+
+
+def with_pins(code: str) -> str:
+    """把 main.py 的預設腳位換成 config/hardware.json 的 pins。"""
+    sys.path.insert(0, str(ROOT / "src"))
+    from fitwell.config import load_hardware
+
+    pins = load_hardware()["pins"]  # 已經檢查過：不重複、旋鈕接類比腳位⋯⋯
+    if PIN_LINE not in code:
+        raise SystemExit("main.py 找不到腳位那一行，請不要改它的寫法：" + PIN_LINE)
+    line = "P = [" + ", ".join(f"pin{n}" for n in pins.values()) + "]"
+    print("腳位：" + "、".join(f"{k}=P{n}" for k, n in pins.items()))
+    return code.replace(PIN_LINE, line)
 
 
 def main() -> None:
-    small = strip_comments(SRC.read_text(encoding="utf-8"))
+    with tempfile.TemporaryDirectory() as d:
+        src = Path(d) / "src.py"
+        src.write_text(with_pins(SRC.read_text(encoding="utf-8")), encoding="utf-8")
+        small = minify(src)
     size = len(small.encode("utf-8"))
-    print(f"main.py 去掉註解後 {size} bytes（上限 8188）")
+    print(f"main.py 縮小後 {size} bytes")
     with tempfile.TemporaryDirectory() as d:
         script = Path(d) / "main.py"
         script.write_text(small, encoding="utf-8")

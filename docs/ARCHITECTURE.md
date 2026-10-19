@@ -100,7 +100,7 @@ USB 序列埠，115200 baud，一行一個指令（`\n` 結尾）。網頁上的
 | 指令 | 意義 |
 |---|---|
 | `HELLO?` | 詢問程式是否在執行（連上前每 3 秒一次） |
-| `CFG:KNOB:0/1`、`CFG:SKNOB:0/1`、`CFG:BUZZER:passive/active/off`、`CFG:SERVO_REV:0/1`、`CFG:BEEP:毫秒`、`CFG:PINS:綠,黃,紅,健身鈕,養生鈕,伺服,蜂鳴器,預算旋鈕,辣度旋鈕` | 零件設定與腳位，收到 `HELLO` 後送出，之後每 15 秒重送 |
+| `CFG:KNOB:0/1`、`CFG:SKNOB:0/1`、`CFG:BUZZER:passive/active/off`、`CFG:SERVO_REV:0/1`、`CFG:BEEP:毫秒` | 零件設定（腳位不經指令傳送，產生 .hex 時依 `pins` 寫進程式），收到 `HELLO` 後送出，之後每 15 秒重送 |
 | `SCORE:0`～`100` | 健康百分比（接著的 `LIGHT` 會用來轉指針） |
 | `LIGHT:GREEN/YELLOW/RED/OFF` | 燈號；micro:bit 先播聲音再轉指針 |
 | `SHOW:文字` | 點陣顯示 |

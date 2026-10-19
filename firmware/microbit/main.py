@@ -9,12 +9,14 @@
 #   選用（沒接會自動略過）：P13 健身鈕、P14 養生鈕、P12 伺服馬達、P16 蜂鳴器、
 #        P4 預算旋鈕、P10 辣度旋鈕（旋鈕中間腳都要串 10kΩ，並在設定打開）
 #
-# 操作：A 切模式（F/W）、B 推薦、A+B 切預算、健身／養生鈕直接推薦、
+# 操作：A 切模式（F/W）、B 推薦、健身／養生鈕直接推薦、
 #       預算旋鈕：1~4 段 + A（不限）、辣度旋鈕：0 不辣 ~ 5 + A（都可以）
 
 from microbit import *
 import gc
 import music
+
+gc.collect()  # 先清掉編譯程式時留下的暫存，後面建立函式才有連續的記憶體（V1 必要）
 
 # ============ 功能開關 ============
 # 平常請改電腦上的 config/hardware.json：連上電腦時會自動把設定送過來（CFG 指令），不用重新燒錄。
@@ -24,11 +26,14 @@ import music
 #   BUZZER     蜂鳴器："passive" 無源（類比）／"active" 有源（數位）／"off" 不要聲音
 #   SERVO_REV  指針方向相反時改成 "1"
 #   BEEP       每一聲的長度（毫秒），越長聽起來越大聲
-#   PINS       腳位（順序：綠燈,黃燈,紅燈,健身鈕,養生鈕,伺服馬達,蜂鳴器,預算旋鈕,辣度旋鈕）
-CFG = {"KNOB": "0", "SKNOB": "0", "BUZZER": "passive", "SERVO_REV": "0", "BEEP": "150",
-       "PINS": "0,1,2,13,14,12,16,4,10"}
+CFG = {"KNOB": "0", "SKNOB": "0", "BUZZER": "passive", "SERVO_REV": "0", "BEEP": "150"}
 # 腳位：0 綠 1 黃 2 紅 3 健身鈕 4 養生鈕 5 伺服 6 蜂鳴器 7 預算旋鈕 8 辣度旋鈕
-P = []
+# 腳位：產生 .hex 時（scripts/build_microbit_hex.py）會依 config/hardware.json 的 pins 自動替換這一行。
+# V1 記憶體很小，連「執行中換腳位」的程式都放不下，所以腳位在燒錄前就決定好。
+P = [pin0, pin1, pin2, pin13, pin14, pin12, pin16, pin4, pin10]
+for p in P[3:5]:  # 外接按鈕：內部上拉，沒接按鈕時一直讀到 1（= 沒按）
+    p.read_digital()
+    p.set_pull(p.PULL_UP)
 
 mode = "FITNESS"
 score = -1      # 電腦送來的健康百分比 0~100（-1 = 還沒收到）
@@ -46,16 +51,6 @@ BEEPS = {"GREEN": (2637, 2), "YELLOW": (2093, 1)}
 
 
 
-def set_pins(v):
-    # 依設定換腳位（電腦送 CFG:PINS 來，或開機用預設值）
-    g = globals()
-    P[:] = [g["pin" + n] for n in v.split(",")]
-    for p in P[3:5]:  # 外接按鈕：內部上拉，沒接按鈕時一直讀到 1（= 沒按）
-        p.read_digital()
-        p.set_pull(p.PULL_UP)
-
-
-set_pins(CFG["PINS"])
 
 
 def beep(freq, n=1):
@@ -101,7 +96,7 @@ def go(cmd):
 
 
 def level(i, z):
-    # 旋鈕或 A+B 換段：告訴電腦，點陣顯示一下（最後一段顯示 A = 不限／都可以）
+    # 旋鈕換段：告訴電腦，點陣顯示一下（最後一段顯示 A = 不限／都可以）
     k = KN[i]
     k[2] = z
     t = "ANY" if z == k[0] - 1 else str(z)
@@ -121,8 +116,6 @@ def handle(line):
         k, v = line[4:].split(":", 1)
         if CFG.get(k) != v:  # 電腦每 15 秒重送一次，沒變就不重寫（省記憶體）
             CFG[k] = v
-            if k == "PINS":
-                set_pins(v)
     elif line[:6] == "SCORE:":
         score = int(line[6:])
     elif line[:6] == "LIGHT:":
@@ -141,15 +134,10 @@ def handle(line):
 def buttons():
     global mode
     if button_a.was_pressed():
-        sleep(120)  # 判斷是不是 A+B 一起按
-        if button_b.is_pressed():
-            level(0, (KN[0][2] + 1) % 5)
-            button_b.was_pressed()
-        else:
-            mode = "WELLNESS" if mode == "FITNESS" else "FITNESS"
-            print("MODE:" + mode)
-            beep(2637)
-            show_mode()
+        mode = "WELLNESS" if mode == "FITNESS" else "FITNESS"
+        print("MODE:" + mode)
+        beep(2637)
+        show_mode()
     if button_b.was_pressed():
         go("GO")
     # 外接按鈕：按下的瞬間（1 → 0）才觸發
@@ -198,9 +186,7 @@ def tick(now):
     global waiting, servo_off
     if waiting and now - waiting > 3000:  # 3 秒沒回應：電腦端可能沒開
         waiting = 0
-        display.show(Image.CONFUSED)
-        sleep(800)
-        show_mode()
+        display.show(Image.CONFUSED)  # 停在這個表情，下一次操作就會換掉
     if servo_off and now > servo_off:
         P[5].write_digital(0)
         servo_off = 0
@@ -208,7 +194,6 @@ def tick(now):
 
 def main():
     global buf, gc_t
-    oom = 0  # 連續記憶體不足的次數
     # ============ 開機自我檢查：每個零件動一下，看哪個沒接好 ============
     gc.collect()  # 先整理編譯程式後留下的零碎記憶體（V1 必要）
     for c in ("GREEN", "YELLOW", "RED"):
@@ -232,15 +217,12 @@ def main():
             if now - gc_t > 1000:  # 每秒整理一次記憶體
                 gc.collect()
                 gc_t = now
-            oom = 0
         except MemoryError:
-            # V1 記憶體不夠時不要當機：清掉緩衝區、整理記憶體後繼續跑
+            # V1 記憶體不夠時不要當機：清掉緩衝區、整理記憶體後繼續跑。
+            # 一直不夠時，電腦端收到大量 WARN:MEMORY 會自動讓程式重開。
             buf = b""
             gc.collect()
-            oom += 1
             print("WARN:MEMORY")
-            if oom > 5:  # 記憶體碎掉救不回來：整台重開（約 1 秒）
-                reset()
         sleep(40)
 
 

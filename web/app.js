@@ -531,7 +531,7 @@ function initVirtualMicrobit() {
   const send = (line) => { vmbLog("→ " + line); return api("/api/microbit/simulate", { line }); };
   $("#vmb-a").onclick = () => send(STATE.mode === "fitness" ? "MODE:WELLNESS" : "MODE:FITNESS");
   $("#vmb-b").onclick = () => send("GO");
-  // A+B：和預算旋鈕同順序循環，最後一格是「不限」（點陣顯示 A）
+  // 模擬預算旋鈕：和實體旋鈕同順序循環，最後一格是「不限」（點陣顯示 A）
   $("#vmb-ab").onclick = () => {
     const n = META.price_ranges.length;
     const cur = STATE.budget === null ? n : META.price_ranges.indexOf(STATE.budget);

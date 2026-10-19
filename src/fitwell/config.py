@@ -14,7 +14,7 @@ def load_config(path: Path = CONFIG_PATH) -> dict[str, Any]:
         return json.load(f)
 
 
-# 腳位：名稱 → 預設腳位（順序就是送給 micro:bit 的 CFG:PINS 順序，不能改）
+# 腳位：名稱 → 預設腳位（順序就是 main.py 裡 P 清單的順序，不能改）；產生 .hex 時寫進程式
 PIN_DEFAULTS: dict[str, int] = {
     "green": 0,
     "yellow": 1,
@@ -92,5 +92,4 @@ def hardware_commands(hw: dict[str, Any]) -> list[str]:
         f"CFG:BUZZER:{hw['buzzer']}",
         f"CFG:SERVO_REV:{int(bool(hw['servo_reverse']))}",
         f"CFG:BEEP:{hw['beep_ms']}",
-        "CFG:PINS:" + ",".join(str(n) for n in check_pins(hw.get("pins") or {}).values()),
     ]
