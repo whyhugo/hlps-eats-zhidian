@@ -325,9 +325,13 @@
           out = j;
         } catch (e) {
           console.warn("AI 小教練失敗，改用規則版：", e);
+          var note = e.message;
         }
       }
-      if (!out) out = E.coachRules(text, this.rec);
+      if (!out) {
+        out = E.coachRules(text, this.rec);
+        if (note) out.summary = `（AI 暫時不能用：${note}，改用關鍵字判斷）${out.summary}`;
+      }
       if (out.picks.length) this.sendLight(out.result.light, out.picks.length, out.result.percent);
       return out;
     }

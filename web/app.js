@@ -421,10 +421,17 @@ let COACH_PICKS = [];
 async function askCoach(text) {
   if (!text.trim()) return;
   const out = $("#coach-out");
+  const token = turnstileToken();
+  if (TURNSTILE_ID !== null && !token) {
+    // 線上版有人機驗證：還沒勾選就先提醒，不要偷偷改用規則版
+    out.innerHTML = `<div class="hint">${ic("shield-check")}<div>請先勾選輸入框下方的「驗證您是人類」，再按「問問看」。</div></div>`;
+    icons();
+    return;
+  }
   out.innerHTML = `<p class="thinking">${ic("loader")}思考中…</p>`;
   icons();
   try {
-    const r = await api("/api/coach", { text, token: turnstileToken() });
+    const r = await api("/api/coach", { text, token });
     if (TURNSTILE_ID !== null) turnstile.reset(TURNSTILE_ID); // 每個驗證只能用一次
     COACH_PICKS = r.picks;
     out.innerHTML = `<div class="coach-summary">${ic(r.source === "claude" ? "sparkles" : "search")}<span>${esc(r.summary)}</span></div>`;
