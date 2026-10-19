@@ -82,6 +82,20 @@ uv run fitwell serve
 
 沒接的零件程式會自動略過；只接基本電路即可完整運作。
 
+**擴充板或接法不同時**：腳位寫在 `config/hardware.json` 的 `pins`，改數字就好，**不用重新燒錄**（電腦連上 micro:bit 時會把腳位送過去）。下表是預設腳位：
+
+| 名稱（`pins` 裡的鍵） | 零件 | 預設 | 可以改成 |
+|---|---|---|---|
+| `green`、`yellow`、`red` | 綠、黃、紅燈 | P0、P1、P2 | 0、1、2、8、12～16 |
+| `fitness_button`、`wellness_button` | 健身、養生鈕 | P13、P14 | 0、1、2、8、12～16 |
+| `servo` | 伺服馬達 | P12 | 0、1、2、8、12～16 |
+| `buzzer` | 蜂鳴器 | P16 | 0、1、2、8、12～16 |
+| `budget_knob`、`spicy_knob` | 預算、辣度旋鈕 | P4、P10 | 0、1、2、3、4、10（要能讀類比） |
+
+規則：同一隻腳只能接一個零件；3、4、6、7、9、10 是點陣的腳位，只能接旋鈕；5、11（A／B 鍵）、19、20 不能用。設定錯誤時 `fitwell serve` 會直接說明哪裡錯。改完後重新啟動 `fitwell serve`；線上版要再執行 `uv run fitwell export-static` 並推上 GitHub。
+
+> 下面的接線圖都以預設腳位繪製。
+
 ![腳位總覽](images/wiring/00_overview.svg)
 
 | 零件 | 腳位 | 接線圖 | 設定（`config/hardware.json`） |
@@ -129,10 +143,10 @@ uv run fitwell serve
 ### 4.3 修改 MicroPython 程式後重新產生 .hex
 
 ```bash
-uv tool run --from uflash==1.3.0 uflash firmware/microbit/main.py 輸出資料夾
+uv run python scripts/build_microbit_hex.py
 ```
 
-把產生的 `micropython.hex` 改名覆蓋 `fitwell-microbit-v1.hex`。V1 記憶體很小，加功能後一定要實機測試。
+會自動拿掉註解（.hex 最多只能放 8KB 的程式）並覆蓋 `fitwell-microbit-v1.hex`。V1 記憶體很小，加功能後一定要實機測試。
 
 ## 5. 啟動與檢查
 

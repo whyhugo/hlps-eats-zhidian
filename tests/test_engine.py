@@ -96,7 +96,24 @@ def test_hardware_config_file(tmp_path):
     p.write_text(json.dumps({"_說明": "x", "use_knob": True, "buzzer": "off", "ring_brightness": 9}), encoding="utf-8")
     hw = load_hardware(p)  # 舊名稱 use_knob 會轉成 use_budget_knob，ring_brightness 忽略
     assert hw["use_budget_knob"] is True and hw["use_spicy_knob"] is False
-    assert hardware_commands(hw) == ["CFG:KNOB:1", "CFG:SKNOB:0", "CFG:BUZZER:off", "CFG:SERVO_REV:0", "CFG:BEEP:150"]
+    assert hardware_commands(hw) == ["CFG:KNOB:1", "CFG:SKNOB:0", "CFG:BUZZER:off", "CFG:SERVO_REV:0", "CFG:BEEP:150",
+                                     "CFG:PINS:0,1,2,13,14,12,16,4,10"]
     p.write_text(json.dumps({"buzzer": "loud"}), encoding="utf-8")
     with pytest.raises(ValueError):
         load_hardware(p)
+
+
+def test_pins_config():
+    import pytest
+
+    from fitwell.config import check_pins
+
+    assert check_pins({"green": 8, "budget_knob": 1, "yellow": 15})["green"] == 8
+    with pytest.raises(ValueError, match="重複"):
+        check_pins({"red": 0})  # 綠燈預設就在 P0
+    with pytest.raises(ValueError, match="類比"):
+        check_pins({"budget_knob": 8})
+    with pytest.raises(ValueError, match="點陣"):
+        check_pins({"servo": 6})
+    with pytest.raises(ValueError, match="不能接"):
+        check_pins({"buzzer": 5})

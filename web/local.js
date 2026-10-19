@@ -226,7 +226,10 @@
     sendHardwareConfig() {
       const hw = this.hardware;
       [`CFG:KNOB:${+!!hw.use_budget_knob}`, `CFG:SKNOB:${+!!hw.use_spicy_knob}`, `CFG:BUZZER:${hw.buzzer}`,
-        `CFG:SERVO_REV:${+!!hw.servo_reverse}`, `CFG:BEEP:${hw.beep_ms}`].forEach((l) => this.link.send(l));
+        `CFG:SERVO_REV:${+!!hw.servo_reverse}`, `CFG:BEEP:${hw.beep_ms}`,
+        // 腳位順序和 config.py 的 PIN_DEFAULTS 相同
+        "CFG:PINS:" + ["green", "yellow", "red", "fitness_button", "wellness_button", "servo", "buzzer", "budget_knob", "spicy_knob"]
+          .map((k) => hw.pins[k]).join(",")].forEach((l) => this.link.send(l));
     }
 
     sendLight(light, count, percent) {

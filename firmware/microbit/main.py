@@ -24,7 +24,11 @@ import music
 #   BUZZER     蜂鳴器："passive" 無源（類比）／"active" 有源（數位）／"off" 不要聲音
 #   SERVO_REV  指針方向相反時改成 "1"
 #   BEEP       每一聲的長度（毫秒），越長聽起來越大聲
-CFG = {"KNOB": "0", "SKNOB": "0", "BUZZER": "passive", "SERVO_REV": "0", "BEEP": "150"}
+#   PINS       腳位（順序：綠燈,黃燈,紅燈,健身鈕,養生鈕,伺服馬達,蜂鳴器,預算旋鈕,辣度旋鈕）
+CFG = {"KNOB": "0", "SKNOB": "0", "BUZZER": "passive", "SERVO_REV": "0", "BEEP": "150",
+       "PINS": "0,1,2,13,14,12,16,4,10"}
+# 腳位：0 綠 1 黃 2 紅 3 健身鈕 4 養生鈕 5 伺服 6 蜂鳴器 7 預算旋鈕 8 辣度旋鈕
+P = []
 
 mode = "FITNESS"
 score = -1      # 電腦送來的健康百分比 0~100（-1 = 還沒收到）
@@ -36,16 +40,22 @@ gc_t = 0
 prev = [1, 1]   # 外接按鈕上一次的狀態
 # 旋鈕：[段數, 上次讀到的段, 目前的段, 指令]；最後一段 = 不限／都可以
 KN = [[5, -1, 2, "BUDGET:"], [7, -1, 2, "SPICY:"]]
-# 先建好常用的資料，主迴圈裡就不用一直建新的（V1 記憶體很小）
-BTNS = ((0, pin13, "FITNESS"), (1, pin14, "WELLNESS"))
+MODES = ("FITNESS", "WELLNESS")
 # 蜂鳴器在 2000~3000Hz 附近最響（共振頻率），所以音高都選在這附近
 BEEPS = {"GREEN": (2637, 2), "YELLOW": (2093, 1)}
 
-# 外接按鈕：內部上拉，沒接按鈕時一直讀到 1（= 沒按）
-pin13.read_digital()
-pin13.set_pull(pin13.PULL_UP)
-pin14.read_digital()
-pin14.set_pull(pin14.PULL_UP)
+
+
+def set_pins(v):
+    # 依設定換腳位（電腦送 CFG:PINS 來，或開機用預設值）
+    g = globals()
+    P[:] = [g["pin" + n] for n in v.split(",")]
+    for p in P[3:5]:  # 外接按鈕：內部上拉，沒接按鈕時一直讀到 1（= 沒按）
+        p.read_digital()
+        p.set_pull(p.PULL_UP)
+
+
+set_pins(CFG["PINS"])
 
 
 def beep(freq, n=1):
@@ -53,18 +63,18 @@ def beep(freq, n=1):
         if CFG["BUZZER"] == "off":
             return
         if CFG["BUZZER"] == "active":
-            pin16.write_digital(1)
+            P[6].write_digital(1)
             sleep(int(CFG["BEEP"]))
-            pin16.write_digital(0)
+            P[6].write_digital(0)
         else:
-            music.pitch(freq, int(CFG["BEEP"]), pin16)  # 從 P16 輸出，P0 的綠燈不會跟著閃
+            music.pitch(freq, int(CFG["BEEP"]), P[6])  # 從蜂鳴器腳位輸出，綠燈不會跟著閃
         sleep(40)
 
 
 def set_light(c):
-    pin0.write_digital(int(c == "GREEN"))
-    pin1.write_digital(int(c == "YELLOW"))
-    pin2.write_digital(int(c == "RED"))
+    P[0].write_digital(int(c == "GREEN"))
+    P[1].write_digital(int(c == "YELLOW"))
+    P[2].write_digital(int(c == "RED"))
 
 
 def servo(a):
@@ -72,8 +82,8 @@ def servo(a):
     global servo_off
     if CFG["SERVO_REV"] == "1":
         a = 180 - a
-    pin12.write_analog(26 + a * 102 // 180)  # 0.5ms ~ 2.5ms 脈波
-    pin12.set_analog_period(20)
+    P[5].write_analog(26 + a * 102 // 180)  # 0.5ms ~ 2.5ms 脈波
+    P[5].set_analog_period(20)
     servo_off = running_time() + 700         # 轉到定位後停止送訊號，避免抖動
 
 
@@ -111,6 +121,8 @@ def handle(line):
         k, v = line[4:].split(":", 1)
         if CFG.get(k) != v:  # 電腦每 15 秒重送一次，沒變就不重寫（省記憶體）
             CFG[k] = v
+            if k == "PINS":
+                set_pins(v)
     elif line[:6] == "SCORE:":
         score = int(line[6:])
     elif line[:6] == "LIGHT:":
@@ -141,23 +153,23 @@ def buttons():
     if button_b.was_pressed():
         go("GO")
     # 外接按鈕：按下的瞬間（1 → 0）才觸發
-    for i, p, m in BTNS:
-        v = p.read_digital()
+    for i in (0, 1):
+        v = P[3 + i].read_digital()
         if v < prev[i]:
-            mode = m
-            go("GO:" + m)
+            mode = MODES[i]
+            go("GO:" + mode)
         prev[i] = v
 
 
 def knobs(now):
-    # 旋鈕接在 P4、P10（點陣也用這兩隻腳），要先關點陣才能讀
+    # 旋鈕預設接在 P4、P10（點陣也用這兩隻腳），要先關點陣才能讀
     global knob_t
     if waiting or now - knob_t < 500 or (CFG["KNOB"] + CFG["SKNOB"]) == "00":
         return
     knob_t = now
     display.off()
-    a = pin4.read_analog()
-    b = pin10.read_analog()
+    a = P[7].read_analog()
+    b = P[8].read_analog()
     display.on()
     for i in (0, 1):
         k = KN[i]
@@ -190,7 +202,7 @@ def tick(now):
         sleep(800)
         show_mode()
     if servo_off and now > servo_off:
-        pin12.write_digital(0)
+        P[5].write_digital(0)
         servo_off = 0
 
 
