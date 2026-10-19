@@ -1,4 +1,4 @@
-"""匯出純靜態網頁版（Cloudflare Pages / GitHub Pages）需要的資料。
+"""匯出純靜態網頁版（Cloudflare Workers 等靜態網站）需要的資料。
 
     fitwell export-static
 

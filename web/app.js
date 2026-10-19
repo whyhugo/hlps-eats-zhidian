@@ -27,7 +27,7 @@ const ic = (name) => `<i data-lucide="${name}"></i>`;
 // ---------------- API ----------------
 // 兩種執行方式共用同一組 /api 路徑：
 //   伺服器版：uv run fitwell serve（Python，micro:bit 由電腦端程式連線）
-//   靜態版：Cloudflare Pages 等純靜態網站（web/local.js 在瀏覽器裡計算，micro:bit 用 Web Serial 連線）
+//   靜態版：Cloudflare Workers 等純靜態網站（web/local.js 在瀏覽器裡計算，micro:bit 用 Web Serial 連線）
 let LOCAL = null;
 let CLOUD = {};
 
@@ -65,7 +65,7 @@ async function init() {
   $("#menu-formula").onchange = loadMenu;
 }
 
-// 有 Python 伺服器就用伺服器；否則（Cloudflare Pages）改用瀏覽器內的本機後端
+// 有 Python 伺服器就用伺服器；否則（Cloudflare 線上版）改用瀏覽器內的本機後端
 async function detectBackend() {
   const json = async (url) => {
     const r = await fetch(url, { cache: "no-store" }).catch(() => null);

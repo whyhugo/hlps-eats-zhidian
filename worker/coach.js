@@ -1,9 +1,9 @@
-// AI 小教練（Cloudflare Pages Function）— 和 src/fitwell/ai_coach.py 的流程相同：
+// AI 小教練（Cloudflare Worker）— 和 src/fitwell/ai_coach.py 的流程相同：
 //   1. Claude 把一句話轉成篩選條件  2. 推薦引擎算候選  3. Claude 從候選中挑 3 道並說明
 // API 金鑰只存在 Cloudflare 的環境變數（Secret），不會出現在網頁裡。
 // 任何一步失敗都改用規則版，網頁一定有結果。
-import "../../web/engine.js";
-import bundle from "../../web/data/bundle.json";
+import "../web/engine.js";
+import bundle from "../web/data/bundle.json";
 
 const E = globalThis.FitwellEngine;
 const rec = new E.Recommender(bundle.dishes, bundle.config);
@@ -75,7 +75,7 @@ async function verifyTurnstile(env, token, ip) {
   return (await r.json()).success === true;
 }
 
-export async function onRequestPost({ request, env }) {
+export async function handleCoach(request, env) {
   const body = await request.json().catch(() => ({}));
   const text = String(body.text || "").trim().slice(0, 300);
   if (!text) return json({ detail: "請輸入想吃什麼" }, 400);
@@ -83,7 +83,7 @@ export async function onRequestPost({ request, env }) {
   if (!(await verifyTurnstile(env, body.token, request.headers.get("CF-Connecting-IP")))) {
     return json({ detail: "人機驗證沒有通過，請重新整理再試" }, 403);
   }
-  // 選用：Cloudflare 的 Rate Limiting binding（wrangler.toml 有設定才會啟用）
+  // 同一個 IP 呼叫太頻繁就擋下（wrangler.toml 的 ratelimits 設定）
   if (env.COACH_LIMITER?.limit) {
     const { success } = await env.COACH_LIMITER.limit({ key: request.headers.get("CF-Connecting-IP") || "anon" });
     if (!success) return json({ detail: "問得太快了，請稍等一下再試" }, 429);

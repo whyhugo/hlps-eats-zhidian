@@ -1,10 +1,10 @@
 {
   "name": "hlps-eats-zhidian",
   "private": true,
-  "description": "Cloudflare Pages 本機測試與部署工具（執行專案本身不需要 Node.js）",
+  "description": "Cloudflare Workers 本機測試與部署工具（執行專案本身不需要 Node.js）",
   "scripts": {
-    "dev": "wrangler pages dev",
-    "deploy": "wrangler pages deploy",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
     "test:engine": "node tests/js/check_engine.cjs"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-"""靜態網頁版（Cloudflare Pages）的檢查。"""
+"""靜態網頁版（Cloudflare 線上版）的檢查。"""
 
 import json
 import shutil

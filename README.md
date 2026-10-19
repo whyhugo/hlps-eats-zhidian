@@ -27,7 +27,7 @@ uv run fitwell serve
 
 開啟 http://localhost:8000 。沒有 micro:bit 時可用網頁右下角的虛擬 micro:bit。
 
-不想安裝任何東西？線上版（Cloudflare Pages + Web Serial）用 Chrome／Edge 打開網址就能連 micro:bit，見 [操作手冊 12](docs/MANUAL.md#12-cloudflare-線上版學生免安裝)。
+不想安裝任何東西？線上版（Cloudflare Workers + Web Serial）用 Chrome／Edge 打開網址就能連 micro:bit，見 [操作手冊 12](docs/MANUAL.md#12-cloudflare-線上版學生免安裝)。
 
 全新 Windows 電腦的安裝步驟見 [操作手冊 2.1](docs/MANUAL.md#21-windows-1011全新電腦)；micro:bit 燒錄（拖曳 .hex 或 MakeCode）見 [操作手冊 4](docs/MANUAL.md#4-燒錄-microbit)。
 

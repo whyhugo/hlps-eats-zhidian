@@ -1,7 +1,7 @@
 // 純靜態網頁版的「本機後端」：在瀏覽器裡做 Python 伺服器（src/fitwell/server.py）做的事。
 // - 推薦、餐盤、菜單：web/engine.js 直接計算（資料在 web/data/bundle.json）
 // - micro:bit：Chrome／Edge 的 Web Serial 直接連 USB 序列埠，指令和 Python 版完全相同
-// - AI 小教練：部署在 Cloudflare 時呼叫 /api/coach（Pages Function），否則用規則版
+// - AI 小教練：部署在 Cloudflare 時呼叫 /api/coach（Cloudflare Worker），否則用規則版
 "use strict";
 
 (function (root) {
