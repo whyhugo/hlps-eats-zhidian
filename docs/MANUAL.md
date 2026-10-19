@@ -98,12 +98,13 @@ uv run fitwell serve
 
 ## 4. 燒錄 micro:bit
 
-兩種程式擇一即可，功能與電腦溝通方式完全相同：
+依 micro:bit 版本選擇（背面晶片旁印有 V1／V2，或 V2 有麥克風孔），功能與電腦溝通方式完全相同：
 
 | 程式 | 檔案 | 適合 | 說明 |
 |---|---|---|---|
-| **MicroPython .hex**（已實機測試） | `firmware/microbit/fitwell-microbit-v1.hex` | V1、V2 | 拖曳燒錄，不用開網頁 |
-| **MakeCode** | `firmware/microbit/makecode.ts` | V1、V2 | 編譯成機器碼，**V1 也不會記憶體不足**；學生可切成積木看程式 |
+| **MicroPython .hex**（已實機測試） | `firmware/microbit/fitwell-microbit-v1.hex` | **V1** | 拖曳燒錄，不用開網頁 |
+| MicroPython（網頁燒錄） | `firmware/microbit/main.py` | V2 | 到 https://python.microbit.org 貼上 `main.py` → Send to micro:bit；V2 記憶體較大，沒有 V1 的記憶體問題 |
+| MakeCode（實驗性） | `firmware/microbit/makecode.ts` | **只建議 V2** | 學生可切成積木看程式。**V1 實機測試會當機**：開啟旋鈕或按外接按鈕約 13 秒後重開 |
 
 ### 4.1 拖曳 .hex（Windows／macOS 相同，最簡單）
 
@@ -113,7 +114,7 @@ uv run fitwell serve
 
 不要用 python.microbit.org 燒錄 V1：網頁版的 MicroPython 比較新、可用記憶體更少，V1 很容易出現 `WARN:MEMORY`。
 
-### 4.2 MakeCode（避開 V1 記憶體限制）
+### 4.2 MakeCode（實驗性，只建議 V2）
 
 1. 用 Edge 或 Chrome 開啟 https://makecode.microbit.org → **新增專案**。
 2. 上方切到 **JavaScript**，刪掉原本內容，貼上 `makecode.ts` 全部內容，再切回 **積木** 確認沒有錯誤。
@@ -123,7 +124,7 @@ uv run fitwell serve
 
 建議用「下載 .hex 再拖曳」，**不要按 MakeCode 的「配對裝置／連線」**：配對後瀏覽器會用 WebUSB 佔住 micro:bit，電腦收不到任何按鍵（見第 10 節）。若已經配對過，請**完全結束瀏覽器**（Windows：關閉所有視窗並確認工作列沒有殘留；macOS：Cmd+Q），再拔插 USB。
 
-> MakeCode 版功能與 MicroPython 版相同，但目前展示用的是已實機測試的 MicroPython .hex；換成 MakeCode 前請在展示前完整測一次按鍵、燈號、蜂鳴器、指針與兩個旋鈕。
+> V1 實機測試結果：MakeCode 版只要從主迴圈送訊息給電腦（外接按鈕、旋鈕換段）就會當機，約 13 秒後自動重開；改用事件佇列、加大序列埠緩衝都沒有解決。**V1 一律使用 MicroPython 的 `fitwell-microbit-v1.hex`**，它已修正記憶體問題（見第 10 節）。
 
 ### 4.3 修改 MicroPython 程式後重新產生 .hex
 
@@ -232,7 +233,7 @@ uv run fitwell serve
 | 燈很暗 | 誤用 10kΩ（棕黑橙），換 100Ω～220Ω |
 | 旋鈕沒反應 | `hardware.json` 未開啟該旋鈕；確認 10kΩ 與腳位（P4／P10）；設定最多 15 秒內自動同步到 micro:bit |
 | 旋鈕亂跳或出現 `WARN:MEMORY` | V1 請改用 `fitwell-microbit-v1.hex` 燒錄（見第 4 節） |
-| A／B 鍵有反應，但燈、聲音、指針、旋鈕都沒反應 | micro:bit 記憶體不足、卡住收不到電腦指令。按 micro:bit 背面 reset 鍵；新版程式與伺服器會自動偵測並重開。常發生請改用 MakeCode 版（4.2） |
+| A／B 鍵有反應，但燈、聲音、指針、旋鈕都沒反應 | micro:bit 記憶體不足、卡住收不到電腦指令。按 micro:bit 背面 reset 鍵；新版程式與伺服器會自動偵測並重開。仍常發生請重新燒錄最新的 `fitwell-microbit-v1.hex` |
 | Windows 找不到 micro:bit（`fitwell ports` 沒有 COM） | 換可傳資料的 USB 線；Windows 7／8 需另裝 mbed 序列埠驅動，建議改用 Windows 10 以上 |
 | Windows 執行 `uv` 顯示找不到指令 | 安裝 uv 後要關掉 PowerShell 重開 |
 | 指針不動 | 確認電池盒有電、與 micro:bit 共地；方向相反改 `servo_reverse` |
@@ -267,7 +268,7 @@ uv run fitwell serve
 
 ### 12.1 學生使用步驟
 
-1. 把 `firmware/microbit/fitwell-microbit-v1.hex`（或 `fitwell-microbit-makecode.hex`）拖進 **MICROBIT** 磁碟燒錄。
+1. 燒錄 micro:bit：V1 把 `firmware/microbit/fitwell-microbit-v1.hex` 拖進 **MICROBIT** 磁碟；V2 用 python.microbit.org 燒錄 `main.py`（見第 4 節）。
 2. 照第 3 節接好電路。
 3. 用 Chrome 或 Edge 打開老師給的網址。
 4. 按右上角 **「連接 micro:bit」** → 在跳出的清單選 micro:bit（Windows 顯示為 `mbed Serial Port (COMx)`）→ 連接。

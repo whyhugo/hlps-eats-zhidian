@@ -2,7 +2,9 @@
 //
 // ✅ micro:bit V1 和 V2 都可以用。功能和 main.py（MicroPython 版）相同。
 // ✅ MakeCode 會編譯成機器碼，不用 MicroPython 直譯器，V1 不會有記憶體不足（MemoryError）的問題。
-// ⚠️ MicroPython 版已實機測試；這個 MakeCode 版尚未實機測試。
+// ⚠️ V1 實機測試結果：在 basic.forever 裡送訊息給電腦（外接按鈕、旋鈕）會讓 V1 當機重開，
+//    改成事件佇列、加大緩衝區也沒有解決。V1 請用 fitwell-microbit-v1.hex（MicroPython 版）；
+//    這個 MakeCode 版只建議 V2 使用（V2 尚未實機測試）。
 //
 // 使用方式：
 //   1. 打開 https://makecode.microbit.org → 新增專案
