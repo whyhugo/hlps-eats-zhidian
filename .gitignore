@@ -31,3 +31,7 @@ docs/reference/
 # impeccable 設計工具的暫存與草稿（只保留設計系統 sidecar）
 .impeccable/*
 !.impeccable/design.json
+
+# Cloudflare 本機測試的祕密值
+.dev.vars
+.wrangler/

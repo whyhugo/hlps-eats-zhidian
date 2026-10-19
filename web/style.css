@@ -104,6 +104,16 @@ svg.lucide { width: 1.1em; height: 1.1em; stroke-width: 2; flex: none; }
   color: var(--on-ink-2);
   font-size: 14px;
 }
+.connect {
+  display: inline-flex; align-items: center; gap: 7px;
+  border: 1.5px solid var(--gold); background: var(--red); color: var(--paper-3);
+  padding: 6px 12px; font-size: 14px; font-weight: 700;
+}
+.connect:hover:not(:disabled) { background: var(--red-ink); }
+.connect.ghost-ink { background: transparent; color: var(--on-ink-2); border-color: var(--ink-3); font-weight: 400; }
+.connect:disabled { opacity: .5; }
+.turnstile:empty { display: none; }
+.turnstile { padding: 10px 16px 0; }
 .stat-dot { width: 9px; height: 9px; border-radius: 50%; background: #8c8073; }
 .stat.on { color: var(--on-ink); }
 .stat.on .stat-dot { background: #58c78f; }
@@ -524,6 +534,7 @@ tbody tr:hover { background: var(--paper-3); }
   .brand-text h1 { font-size: 18px; }
   .brand-text p { font-size: 12px; letter-spacing: .16em; }
   .stat-text { display: none; }
+  .connect span { display: none; }
   .mode-switch { width: 100%; }
   .mode { flex: 1; justify-content: center; padding: 9px 10px; }
   .tabs { padding: 0 8px; mask-image: linear-gradient(to right, #000 85%, transparent); }

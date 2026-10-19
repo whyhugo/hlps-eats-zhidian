@@ -1,0 +1,9 @@
+# Cloudflare Pages 設定（純靜態網頁版 + AI 小教練 Function）
+# 部署方式見 docs/MANUAL.md「Cloudflare 線上版」。祕密值（API 金鑰）不要寫在這裡，請到 Cloudflare 後台設定。
+name = "hlps-eats-zhidian"
+pages_build_output_dir = "web"
+compatibility_date = "2025-09-01"
+
+[vars]
+# 想換模型時改這裡
+FITWELL_AI_MODEL = "claude-opus-5-5"

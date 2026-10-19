@@ -1,0 +1,6960 @@
+{
+ "recommend": [
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     197,
+     128
+    ],
+    "scores": [
+     13,
+     13,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 83,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 141,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 141
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 12,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 12
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     128,
+     211
+    ],
+    "scores": [
+     13,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 78,
+    "candidates": 24,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 24
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 159,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 159
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 17,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 17
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     128,
+     211
+    ],
+    "scores": [
+     13,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 78,
+    "candidates": 26,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 26
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     197,
+     128
+    ],
+    "scores": [
+     13,
+     13,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 83,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     49,
+     50,
+     177
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     191,
+     201
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 4,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 4
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     6,
+     3,
+     3
+    ],
+    "lights": [
+     "red",
+     "red",
+     "red"
+    ],
+    "light": "red",
+    "percent": 39,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     49,
+     50,
+     177
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 23,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 23
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50
+    ],
+    "scores": [
+     13
+    ],
+    "lights": [
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 1,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 1
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 1
+     }
+    ],
+    "hints": [
+     "把預算提高到「101-300」可以找到 7 道",
+     "可接受辣度放寬到 1 可以找到 3 道",
+     "主餐類型改成「不限」可以找到 41 道"
+    ],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     6,
+     3,
+     3
+    ],
+    "lights": [
+     "red",
+     "red",
+     "red"
+    ],
+    "light": "red",
+    "percent": 39,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     49,
+     50,
+     177
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 27,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 45
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 27
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     191,
+     201
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 3,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 45
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 3
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     6,
+     3,
+     3
+    ],
+    "lights": [
+     "red",
+     "red",
+     "red"
+    ],
+    "light": "red",
+    "percent": 39,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 45
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     49,
+     50,
+     177
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     191,
+     201
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 4,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 4
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     6,
+     3,
+     3
+    ],
+    "lights": [
+     "red",
+     "red",
+     "red"
+    ],
+    "light": "red",
+    "percent": 39,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 93,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 93
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 11,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 11
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     31,
+     103
+    ],
+    "scores": [
+     9,
+     9,
+     9
+    ],
+    "lights": [
+     "yellow",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 67,
+    "candidates": 14,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 14
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 72,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 112
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 72
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 7,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 112
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 7
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     31,
+     103
+    ],
+    "scores": [
+     9,
+     9,
+     9
+    ],
+    "lights": [
+     "yellow",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 67,
+    "candidates": 13,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 112
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 13
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 81,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 124
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 81
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 10,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 124
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 10
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     31,
+     103
+    ],
+    "scores": [
+     9,
+     9,
+     9
+    ],
+    "lights": [
+     "yellow",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 67,
+    "candidates": 14,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 124
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 14
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 93,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 93
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 11,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 11
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     31,
+     103
+    ],
+    "scores": [
+     9,
+     9,
+     9
+    ],
+    "lights": [
+     "yellow",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 67,
+    "candidates": 14,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 14
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 170,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 170
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 18,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 18
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     197,
+     128
+    ],
+    "scores": [
+     13,
+     13,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 83,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 132,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 172
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 132
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 11,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 172
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 11
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     128,
+     211
+    ],
+    "scores": [
+     13,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 78,
+    "candidates": 24,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 172
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 24
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 148,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 148
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 15,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 15
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     128,
+     211
+    ],
+    "scores": [
+     13,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 78,
+    "candidates": 26,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 26
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 170,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 170
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 18,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 18
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     197,
+     128
+    ],
+    "scores": [
+     13,
+     13,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 83,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     197,
+     128
+    ],
+    "scores": [
+     13,
+     13,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 83,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 141,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 141
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 12,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 12
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     128,
+     211
+    ],
+    "scores": [
+     13,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 78,
+    "candidates": 24,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 24
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 159,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 159
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 17,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 17
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     128,
+     211
+    ],
+    "scores": [
+     13,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 78,
+    "candidates": 26,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 26
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193
+    ],
+    "scores": [
+     15,
+     15,
+     15
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     27,
+     36
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 89,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "500以上",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     198,
+     197,
+     128
+    ],
+    "scores": [
+     13,
+     13,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 83,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 141,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 141
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 12,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 12
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 24,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 24
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 159,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 159
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 17,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 17
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 26,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 26
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     50,
+     177,
+     191
+    ],
+    "scores": [
+     11,
+     11,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     191,
+     201
+    ],
+    "scores": [
+     11,
+     11,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 4,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 4
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     9,
+     4,
+     4
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 63,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     50,
+     177,
+     41
+    ],
+    "scores": [
+     11,
+     11,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 23,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 23
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50
+    ],
+    "scores": [
+     11
+    ],
+    "lights": [
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 1,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 1
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 1
+     }
+    ],
+    "hints": [
+     "把預算提高到「101-300」可以找到 7 道",
+     "可接受辣度放寬到 1 可以找到 3 道",
+     "主餐類型改成「不限」可以找到 41 道"
+    ],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     9,
+     4,
+     4
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 63,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     50,
+     177,
+     191
+    ],
+    "scores": [
+     11,
+     11,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 27,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 45
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 27
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     191,
+     201
+    ],
+    "scores": [
+     11,
+     11,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 3,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 45
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 3
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     9,
+     4,
+     4
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 63,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 45
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     50,
+     177,
+     191
+    ],
+    "scores": [
+     11,
+     11,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     50,
+     191,
+     201
+    ],
+    "scores": [
+     11,
+     11,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 81,
+    "candidates": 4,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 4
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     43,
+     42,
+     47
+    ],
+    "scores": [
+     9,
+     4,
+     4
+    ],
+    "lights": [
+     "green",
+     "yellow",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 63,
+    "candidates": 5,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 47
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 5
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 93,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 93
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 11,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 11
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     43,
+     42
+    ],
+    "scores": [
+     12,
+     9,
+     4
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "green",
+    "percent": 72,
+    "candidates": 14,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 14
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 72,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 112
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 72
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 7,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 112
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 7
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     43,
+     42
+    ],
+    "scores": [
+     12,
+     9,
+     4
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "green",
+    "percent": 72,
+    "candidates": 13,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 112
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 13
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 81,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 124
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 81
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 10,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 124
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 10
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     43,
+     42
+    ],
+    "scores": [
+     12,
+     9,
+     4
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "green",
+    "percent": 72,
+    "candidates": 14,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 124
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 14
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 93,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 93
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 11,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 11
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "101-300",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     43,
+     42
+    ],
+    "scores": [
+     12,
+     9,
+     4
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "green",
+    "percent": 72,
+    "candidates": 14,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 136
+     },
+     {
+      "step": "辣度",
+      "remaining": 136
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 14
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 170,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 170
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 18,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 18
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 132,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 172
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 132
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 11,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 172
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 11
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 24,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 172
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 24
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 148,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 148
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 15,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 15
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 26,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 26
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     5,
+     10
+    ],
+    "scores": [
+     17,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 91,
+    "candidates": 170,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 170
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 18,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 18
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "301-500",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 213
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": null,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": null,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 141,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 141
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 12,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 12
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 0,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 24,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 181
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 24
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 2,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 159,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 159
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 2,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 17,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 17
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 2,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 26,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 202
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 26
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 5,
+    "main_types": []
+   },
+   "result": {
+    "ids": [
+     37,
+     28,
+     5
+    ],
+    "scores": [
+     17,
+     17,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 96,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 5,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "result": {
+    "ids": [
+     5,
+     15,
+     50
+    ],
+    "scores": [
+     13,
+     12,
+     11
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 84,
+    "candidates": 20,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 20
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "500以上",
+    "max_spicy": 5,
+    "main_types": [
+     "麵類",
+     "飯類"
+    ]
+   },
+   "result": {
+    "ids": [
+     12,
+     128,
+     230
+    ],
+    "scores": [
+     12,
+     10,
+     10
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 80,
+    "candidates": 29,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 29
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": [
+     "炸物類"
+    ]
+   },
+   "result": {
+    "ids": [],
+    "scores": [],
+    "lights": [],
+    "light": "red",
+    "percent": 0,
+    "candidates": 0,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 0
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 0
+     }
+    ],
+    "hints": [
+     "把預算提高到「101-300」可以找到 5 道",
+     "主餐類型改成「不限」可以找到 41 道"
+    ],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 0,
+    "main_types": [
+     "肉類"
+    ],
+    "formula": null
+   },
+   "result": {
+    "ids": [
+     200,
+     203,
+     196
+    ],
+    "scores": [
+     8,
+     8,
+     5
+    ],
+    "lights": [
+     "green",
+     "green",
+     "yellow"
+    ],
+    "light": "yellow",
+    "percent": 68,
+    "candidates": 7,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 47
+     },
+     {
+      "step": "辣度",
+      "remaining": 41
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 7
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "wellness_v1",
+    "formula_text": "油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": null,
+    "main_types": [],
+    "formula": "fitness_v1"
+   },
+   "result": {
+    "ids": [
+     33,
+     187,
+     188
+    ],
+    "scores": [
+     13,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 100,
+    "candidates": 181,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 224
+     },
+     {
+      "step": "辣度",
+      "remaining": 224
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 181
+     },
+     {
+      "step": "取前 3 名",
+      "remaining": 3
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v1",
+    "formula_text": "油脂×2 + 蛋白質×3 − 鹽分×1 + 澱粉×1"
+   }
+  },
+  {
+   "query": {
+    "mode": "fitness",
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": [],
+    "top_n": 8
+   },
+   "result": {
+    "ids": [
+     187,
+     188,
+     193,
+     190,
+     192,
+     223,
+     49,
+     50
+    ],
+    "scores": [
+     15,
+     15,
+     15,
+     15,
+     15,
+     15,
+     13,
+     13
+    ],
+    "lights": [
+     "green",
+     "green",
+     "green",
+     "green",
+     "green",
+     "green",
+     "green",
+     "green"
+    ],
+    "light": "green",
+    "percent": 97,
+    "candidates": 148,
+    "steps": [
+     {
+      "step": "計分排序",
+      "remaining": 224
+     },
+     {
+      "step": "預算",
+      "remaining": 213
+     },
+     {
+      "step": "辣度",
+      "remaining": 191
+     },
+     {
+      "step": "主餐類型",
+      "remaining": 148
+     },
+     {
+      "step": "取前 8 名",
+      "remaining": 8
+     }
+    ],
+    "hints": [],
+    "formula_id": "fitness_v2",
+    "formula_text": "油脂×2 + 蛋白質×3 + 鹽分×1 + 澱粉×1"
+   }
+  }
+ ],
+ "tray": [
+  {
+   "ids": [
+    1,
+    2
+   ],
+   "mode": "fitness",
+   "average": 9.5,
+   "light": "yellow",
+   "percent": 69,
+   "warnings": []
+  },
+  {
+   "ids": [
+    1,
+    2
+   ],
+   "mode": "wellness",
+   "average": 6.5,
+   "light": "yellow",
+   "percent": 66,
+   "warnings": []
+  },
+  {
+   "ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "mode": "fitness",
+   "average": 9.4,
+   "light": "yellow",
+   "percent": 69,
+   "warnings": [
+    "有 3 道高油餐點，油脂可能過量"
+   ]
+  },
+  {
+   "ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "mode": "wellness",
+   "average": 6.4,
+   "light": "yellow",
+   "percent": 66,
+   "warnings": [
+    "有 3 道高油餐點，油脂可能過量"
+   ]
+  },
+  {
+   "ids": [
+    10,
+    20,
+    30
+   ],
+   "mode": "fitness",
+   "average": 9.3,
+   "light": "yellow",
+   "percent": 69,
+   "warnings": []
+  },
+  {
+   "ids": [
+    10,
+    20,
+    30
+   ],
+   "mode": "wellness",
+   "average": 3.7,
+   "light": "red",
+   "percent": 57,
+   "warnings": []
+  },
+  {
+   "ids": [
+    7
+   ],
+   "mode": "fitness",
+   "average": 10.0,
+   "light": "yellow",
+   "percent": 72,
+   "warnings": [
+    "健身模式建議至少一道高蛋白質餐點"
+   ]
+  },
+  {
+   "ids": [
+    7
+   ],
+   "mode": "wellness",
+   "average": 13.0,
+   "light": "green",
+   "percent": 87,
+   "warnings": []
+  }
+ ],
+ "parse": [
+  {
+   "text": "我剛跑完步，想吃高蛋白但不要太油，300 元以內",
+   "query": {
+    "mode": "fitness",
+    "budget": "101-300",
+    "max_spicy": null,
+    "main_types": []
+   },
+   "reasons": [
+    "判斷為健身模式",
+    "預算 101-300"
+   ]
+  },
+  {
+   "text": "帶阿嬤吃飯，要清淡、不辣、好咬",
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": []
+   },
+   "reasons": [
+    "判斷為養生模式",
+    "不吃辣"
+   ]
+  },
+  {
+   "text": "想吃海鮮，養生一點，不要辣",
+   "query": {
+    "mode": "wellness",
+    "budget": null,
+    "max_spicy": 0,
+    "main_types": [
+     "海鮮類"
+    ]
+   },
+   "reasons": [
+    "判斷為養生模式",
+    "不吃辣",
+    "想吃 海鮮類"
+   ]
+  },
+  {
+   "text": "100 元以內有什麼健康的",
+   "query": {
+    "mode": "wellness",
+    "budget": "100以下",
+    "max_spicy": 1,
+    "main_types": []
+   },
+   "reasons": [
+    "判斷為養生模式",
+    "預算 100以下"
+   ]
+  },
+  {
+   "text": "我想吃辣的麵",
+   "query": {
+    "mode": "fitness",
+    "budget": null,
+    "max_spicy": 5,
+    "main_types": [
+     "麵類"
+    ]
+   },
+   "reasons": [
+    "判斷為健身模式",
+    "可以吃辣",
+    "想吃 麵類"
+   ]
+  }
+ ]
+}

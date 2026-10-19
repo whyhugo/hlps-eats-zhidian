@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#1e1b18">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/NotoSerifTC-Black-subset.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <!-- 朱印的墨色不均：邊緣輕微侵蝕 -->
@@ -46,6 +46,7 @@
     </div>
 
     <div class="status">
+      <button id="mb-connect" type="button" class="connect" hidden><i data-lucide="usb"></i><span>連接 micro:bit</span></button>
       <span id="mb-status" class="stat off" tabindex="0">
         <i data-lucide="cpu"></i><span class="stat-text">micro:bit</span><i class="stat-dot" aria-hidden="true"></i>
         <span class="tipcard tipcard-end" role="tooltip" id="mb-tip">micro:bit 未連接</span>
@@ -168,6 +169,7 @@
           <input id="coach-input" type="text" maxlength="200" aria-label="想吃什麼" placeholder="例如：剛打完球，想吃高蛋白但不要太油，300 元以內">
           <button class="go go-sm" type="submit"><i data-lucide="send"></i>問問看</button>
         </form>
+        <div id="coach-turnstile" class="turnstile"></div>
         <div class="chips examples">
           <button type="button" class="chip" data-example="我剛跑完步，想吃高蛋白但不要太油，300 元以內"><i data-lucide="footprints"></i>跑完步</button>
           <button type="button" class="chip" data-example="帶阿嬤吃飯，要清淡、不辣、好咬"><i data-lucide="heart-handshake"></i>帶阿嬤</button>
@@ -248,6 +250,8 @@
 
   <script src="vendor/lucide-0.468.0.min.js"></script>
   <script src="vendor/gsap-3.13.0.min.js"></script>
-  <script src="app.js?v=10"></script>
+  <script src="engine.js?v=11"></script>
+  <script src="local.js?v=11"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

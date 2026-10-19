@@ -249,5 +249,111 @@ uv run fitwell serve
 | `uv run fitwell recommend -m fitness -b 101-300 -s 2` | 在終端機試推薦 |
 | `uv run fitwell monitor` | 不經伺服器直接與 micro:bit 對話（診斷用，需先關閉 serve） |
 | `uv run fitwell ports` | 列出序列埠 |
+| `uv run fitwell export-static` | 匯出線上版（Cloudflare）資料 |
 | `uv run pytest` | 自動測試 |
 | `uv run python scripts/gen_wiring.py`、`gen_diagrams.py` | 重新產生接線圖、架構圖 |
+
+## 12. Cloudflare 線上版（學生免安裝）
+
+同一份網頁也能放在 Cloudflare Pages。學生**不需要安裝 Python**，只要用 Chrome 或 Edge 打開網址，就能用 **Web Serial** 直接連 micro:bit。
+
+| | 電腦版（`fitwell serve`） | 線上版（Cloudflare） |
+|---|---|---|
+| 安裝 | uv + Python 套件 | 不用安裝 |
+| micro:bit 連線 | 電腦端程式自動連線 | 網頁按「連接 micro:bit」（Web Serial） |
+| 瀏覽器 | 任何瀏覽器 | 電腦版 **Chrome／Edge**（Safari、Firefox、iPad、手機不能連 micro:bit，但可以用虛擬 micro:bit） |
+| 網路 | 可離線（展場用） | 需要網路 |
+| AI 小教練 | `.env` 的金鑰 | Cloudflare 後台的 Secret；有人機驗證 |
+
+### 12.1 學生使用步驟
+
+1. 把 `firmware/microbit/fitwell-microbit-v1.hex`（或 `fitwell-microbit-makecode.hex`）拖進 **MICROBIT** 磁碟燒錄。
+2. 照第 3 節接好電路。
+3. 用 Chrome 或 Edge 打開老師給的網址。
+4. 按右上角 **「連接 micro:bit」** → 在跳出的清單選 micro:bit（Windows 顯示為 `mbed Serial Port (COMx)`）→ 連接。
+5. 右上角 micro:bit 圖示變綠即可操作。之後再開同一台電腦會自動連上。
+
+注意：同一時間只能有一個程式使用 micro:bit。連線前請關閉 MakeCode 分頁、其他開著本網站的分頁，以及 `fitwell serve`。
+
+### 12.2 架構
+
+```
+瀏覽器（Chrome／Edge）
+ ├─ web/engine.js   推薦與計分（和 Python 版完全相同，tests/test_engine_js.py 自動比對）
+ ├─ web/local.js    取代伺服器：狀態、餐盤、Web Serial 連 micro:bit
+ └─ web/data/bundle.json  菜單＋公式＋硬體設定（uv run fitwell export-static 產生）
+Cloudflare Pages Functions
+ ├─ /api/cloud-config  告訴網頁 AI 是否開啟、Turnstile site key
+ └─ /api/coach         AI 小教練（金鑰只在 Cloudflare，不在網頁裡）
+```
+
+### 12.3 老師更新內容
+
+改了 `data/`、`config/scoring.json` 或 `config/hardware.json` 之後：
+
+```bash
+uv run fitwell export-static   # 重新產生 web/data/bundle.json
+uv run pytest                  # 確認 JS 與 Python 結果一致
+git add -A && git commit -m "更新菜單" && git push
+```
+
+push 之後 Cloudflare 約 1 分鐘內自動更新網站。
+
+### 12.4 本機先試（選用，需要 Node.js）
+
+```bash
+mise exec -- npm install
+mise exec -- npm run dev        # http://localhost:8788，和 Cloudflare 上的行為相同
+```
+
+AI 金鑰放在 `.dev.vars`（格式同 `.env`，已加入 `.gitignore`）。
+
+### 12.5 需要在 Cloudflare 後台操作的步驟
+
+以下步驟要用你的 Cloudflare、Anthropic 帳號登入操作，程式沒辦法代勞：
+
+1. **建立 Pages 專案（必要）**
+   Cloudflare 後台 → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → 授權 GitHub → 選 `whyhugo/hlps-eats-zhidian`。
+   - Production branch：`main`
+   - Framework preset：`None`
+   - Build command：**留空**
+   - Build output directory：`web`
+
+   按 **Save and Deploy**，完成後會得到 `https://<專案名>.pages.dev`。
+
+2. **設定 AI 金鑰（要用 AI 小教練才需要）**
+   Pages 專案 → **Settings** → **Variables and Secrets** → **Add** → 類型選 **Secret**：
+   - `ANTHROPIC_API_KEY` = 你的 Anthropic API 金鑰（建議另外建一把專用金鑰）
+
+   設定後到 **Deployments** 按最新一筆的 **Retry deployment**，新設定才會生效。
+
+3. **Anthropic 花費上限（強烈建議）**
+   https://console.anthropic.com → **Settings** → **Limits**，設定每月花費上限。網址公開後，任何人都能呼叫 AI 小教練。
+
+4. **Turnstile 人機驗證（建議）**
+   Cloudflare 後台 → **Turnstile** → **Add widget**：
+   - Hostname：`<專案名>.pages.dev`（有自訂網域也一起加）
+   - Widget mode：**Managed**
+
+   建立後複製兩個值，回到 Pages 專案的 **Variables and Secrets**，用 Secret 類型新增：
+   - `TURNSTILE_SITE_KEY` = Site Key
+   - `TURNSTILE_SECRET_KEY` = Secret Key
+
+   重新部署後，AI 小教練輸入框下方會出現驗證框；沒通過驗證的請求會被擋下。
+
+5. **自訂網域與 DNS（選用）**
+   Pages 專案 → **Custom domains** → **Set up a custom domain** → 輸入例如 `eats.你的網域`。
+   - 網域已經在 Cloudflare：DNS 紀錄（CNAME）會自動建立。
+   - 網域在別家：到那家 DNS 新增 `CNAME eats → <專案名>.pages.dev`。
+
+6. **流量限制（選用，需要第 5 步的自訂網域）**
+   網域的 **Security** → **WAF** → **Rate limiting rules** → 新增規則：
+   - 條件：URI Path 等於 `/api/coach`
+   - 限制：同一 IP 每 10 秒 3 次（免費方案只能選 10 秒區間）
+   - 動作：Block
+
+   `*.pages.dev` 網址不適用 WAF 規則，所以要擋濫用請改用自訂網域。
+
+7. **Zero Trust Access（通常不需要）**
+   只有想限制「特定帳號才能開網站」時才設定：Zero Trust → **Access** → **Applications** → 新增 Self-hosted，網域填 Pages 網址，政策選 Email 一次性密碼。
+   設定後評審、參觀者也要登入才能使用，所以公開展示時不建議開啟。

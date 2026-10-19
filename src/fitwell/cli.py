@@ -4,6 +4,7 @@
     fitwell recommend -m fitness -b 101-300 -s 2
     fitwell serve [--port 8000]        啟動網頁展示畫面 + micro:bit 串接
     fitwell ports                      列出電腦上的序列埠（找 micro:bit 用）
+    fitwell export-static              匯出純靜態網頁版資料（Cloudflare Pages 用）
 """
 
 from __future__ import annotations
@@ -57,6 +58,14 @@ def cmd_recommend(a: argparse.Namespace) -> None:
     for h in r.hints:
         print(f" 💡 {h}")
     print(f"\n整體燈號：{LIGHT_ICON[r.light]}\n")
+
+
+def cmd_export_static(_: argparse.Namespace) -> None:
+    from .static_export import export_static
+
+    bundle, golden = export_static()
+    print(f"✅ 已產生 {bundle.relative_to(bundle.parents[2])}（靜態網頁版資料）與 {golden.relative_to(golden.parents[1])}")
+    print("   推上 GitHub 後，Cloudflare Pages 會自動更新網站")
 
 
 def cmd_serve(a: argparse.Namespace) -> None:
@@ -195,6 +204,7 @@ def main(argv: list[str] | None = None) -> None:
     s.set_defaults(func=cmd_serve)
 
     sub.add_parser("ports", help="列出序列埠").set_defaults(func=cmd_ports)
+    sub.add_parser("export-static", help="匯出純靜態網頁版資料（Cloudflare Pages 用）").set_defaults(func=cmd_export_static)
 
     mo = sub.add_parser("monitor", help="直接和 micro:bit 對話（檢查接線與韌體用，請先關掉 fitwell serve）")
     mo.add_argument("--serial-port")

@@ -25,7 +25,14 @@ const icons = () => window.lucide?.createIcons({ icons: lucide.icons, attrs: { "
 const ic = (name) => `<i data-lucide="${name}"></i>`;
 
 // ---------------- API ----------------
+// 兩種執行方式共用同一組 /api 路徑：
+//   伺服器版：uv run fitwell serve（Python，micro:bit 由電腦端程式連線）
+//   靜態版：Cloudflare Pages 等純靜態網站（web/local.js 在瀏覽器裡計算，micro:bit 用 Web Serial 連線）
+let LOCAL = null;
+let CLOUD = {};
+
 async function api(path, body) {
+  if (LOCAL) return LOCAL.handle(path, body);
   const opt = body === undefined ? {} : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
   const r = await fetch(path, opt);
   if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || r.statusText);
@@ -37,6 +44,7 @@ const setState = (patch) => api("/api/state", patch).then(renderState);
 async function init() {
   trackHeaderHeight();
   icons();
+  await detectBackend();
   META = await api("/api/meta");
   buildChips();
   renderState(META.state);
@@ -55,6 +63,53 @@ async function init() {
   $$("[data-example]").forEach((b) => (b.onclick = () => { $("#coach-input").value = b.dataset.example; askCoach(b.dataset.example); }));
   $("#menu-search").oninput = renderMenuRows;
   $("#menu-formula").onchange = loadMenu;
+}
+
+// 有 Python 伺服器就用伺服器；否則（Cloudflare Pages）改用瀏覽器內的本機後端
+async function detectBackend() {
+  const json = async (url) => {
+    const r = await fetch(url, { cache: "no-store" }).catch(() => null);
+    return r?.ok && r.headers.get("content-type")?.includes("json") ? r.json() : null;
+  };
+  if (await json("/api/meta")) return;
+  const bundle = await json("data/bundle.json");
+  if (!bundle) throw new Error("找不到 data/bundle.json，請執行 uv run fitwell export-static");
+  CLOUD = (await json("/api/cloud-config")) || {};
+  LOCAL = new FitwellLocal(bundle, CLOUD);
+  document.body.classList.add("static-mode");
+  initSerialButton();
+  initTurnstile();
+}
+
+// 靜態版：右上角「連接 micro:bit」按鈕（Web Serial）
+function initSerialButton() {
+  const btn = $("#mb-connect");
+  btn.hidden = false;
+  btn.onclick = async () => {
+    try {
+      if (LOCAL.link.connected) await LOCAL.disconnect();
+      else await LOCAL.connect();
+    } catch (e) {
+      if (e.name !== "NotFoundError") showError(e.message); // NotFoundError = 使用者按了取消
+    }
+  };
+}
+
+// 靜態版的 AI 小教練：Cloudflare Turnstile 人機驗證（有設定 site key 才會出現）
+let TURNSTILE_ID = null;
+function initTurnstile() {
+  if (!CLOUD.ai || !CLOUD.turnstileSiteKey) return;
+  window.onTurnstileLoad = () => {
+    TURNSTILE_ID = turnstile.render("#coach-turnstile", { sitekey: CLOUD.turnstileSiteKey, size: "flexible", theme: "light", language: "zh-tw" });
+  };
+  const s = document.createElement("script");
+  s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit";
+  s.async = true;
+  document.head.append(s);
+}
+function turnstileToken() {
+  if (TURNSTILE_ID === null || !window.turnstile) return undefined;
+  return turnstile.getResponse(TURNSTILE_ID) || undefined;
 }
 
 // 頂部高度會因換行改變，分頁列與左側條件黏在它下面
@@ -138,6 +193,7 @@ function renderStatus(s) {
   const m = s.microbit;
   const mb = $("#mb-status");
   mb.className = "stat " + (m.responding ? "on" : m.connected ? "warn" : "off");
+  if (m.webserial) return renderSerialStatus(m, mb, s);
   const mbText = m.responding
     ? `micro:bit 已連接<br>${esc(m.port)}｜收到 ${m.rx} 則、送出 ${m.tx} 則`
     : m.connected
@@ -154,16 +210,41 @@ function renderStatus(s) {
   ai.setAttribute("aria-label", aiText);
 }
 
+// 靜態版的 micro:bit 狀態（Web Serial）
+function renderSerialStatus(m, mb, s) {
+  const btn = $("#mb-connect");
+  btn.innerHTML = m.connected ? `${ic("unplug")}<span>中斷連線</span>` : `${ic("usb")}<span>連接 micro:bit</span>`;
+  btn.classList.toggle("ghost-ink", m.connected);
+  btn.disabled = !m.supported;
+  const mbText = !m.supported
+    ? "這個瀏覽器不能連接 micro:bit（需要 Web Serial）。<br>請用電腦版 Chrome 或 Edge；也可以展開右下角的虛擬 micro:bit。"
+    : m.responding
+      ? `micro:bit 已連接（Web Serial）<br>收到 ${m.rx} 則、送出 ${m.tx} 則`
+      : m.connected
+        ? "已連接，但 micro:bit 程式沒回應。<br>請確認已把本專案的 .hex 燒進 micro:bit，並關閉 MakeCode 等燒錄網頁。"
+        : "尚未連接 micro:bit。<br>插上 USB 後按「連接 micro:bit」，選擇清單中的 micro:bit。";
+  mb.className = "stat " + (m.responding ? "on" : m.connected ? "warn" : "off");
+  $("#mb-tip").innerHTML = mbText;
+  mb.setAttribute("aria-label", mbText.replace(/<br>/g, " "));
+  const ai = $("#ai-status");
+  ai.className = "stat " + (s.ai ? "on" : "off");
+  const aiText = s.ai ? "AI 小教練已連線（Claude）" : "AI 小教練使用關鍵字規則版";
+  $("#ai-tip").textContent = aiText;
+  ai.setAttribute("aria-label", aiText);
+  icons();
+}
+
 // ---------------- 即時事件（micro:bit 按鍵也會推到這裡） ----------------
 function listen() {
+  if (LOCAL) { LOCAL.on(onEvent); return; }
   const es = new EventSource("/api/events");
-  es.onmessage = (e) => {
-    const { type, data } = JSON.parse(e.data);
-    if (type === "status") { renderStatus(data); if (data.state) renderState(data.state); }
-    if (type === "state") renderState(data);
-    if (type === "result") { switchTab("recommend"); renderResult(data); }
-    if (type === "microbit") vmbLog("← " + data.line);
-  };
+  es.onmessage = (e) => onEvent(JSON.parse(e.data));
+}
+function onEvent({ type, data }) {
+  if (type === "status") { renderStatus(data); if (data.state) renderState(data.state); }
+  if (type === "state") renderState(data);
+  if (type === "result") { switchTab("recommend"); renderResult(data); }
+  if (type === "microbit") vmbLog("← " + data.line);
 }
 
 // ---------------- 推薦結果（求籤） ----------------
@@ -343,7 +424,8 @@ async function askCoach(text) {
   out.innerHTML = `<p class="thinking">${ic("loader")}思考中…</p>`;
   icons();
   try {
-    const r = await api("/api/coach", { text });
+    const r = await api("/api/coach", { text, token: turnstileToken() });
+    if (TURNSTILE_ID !== null) turnstile.reset(TURNSTILE_ID); // 每個驗證只能用一次
     COACH_PICKS = r.picks;
     out.innerHTML = `<div class="coach-summary">${ic(r.source === "claude" ? "sparkles" : "search")}<span>${esc(r.summary)}</span></div>`;
     if (!r.picks.length) out.innerHTML += `<div class="hint">${ic("lightbulb")}<div>找不到符合的餐點。${r.result.hints.map(esc).join("；")}</div></div>`;
