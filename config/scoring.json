@@ -1,0 +1,56 @@
+{
+  "_說明": "評分設定檔。學生可以直接改這裡的數字，不用改程式。改完重新整理網頁（或重啟伺服器）即可看到排名變化。",
+
+  "active_formula": {
+    "fitness": "fitness_v2",
+    "wellness": "wellness_v1"
+  },
+
+  "formulas": {
+    "fitness_v1": {
+      "label": "健身 v1（學生原版）",
+      "mode": "fitness",
+      "note": "學生 Excel 原始公式：油脂×2 + 蛋白質×3 − 鹽分×1 + 澱粉×1。注意：鹽分加權本身已經是『好=正分』，再減一次會變成越鹹分數越高。",
+      "terms": { "fat": 2, "protein": 3, "salt": -1, "starch": 1 }
+    },
+    "fitness_v2": {
+      "label": "健身 v2（修正鹽分方向）",
+      "mode": "fitness",
+      "note": "把鹽分改成 +1，讓低鹽（+2）加分、高鹽（−1）扣分。其他維持學生設計。",
+      "terms": { "fat": 2, "protein": 3, "salt": 1, "starch": 1 }
+    },
+    "wellness_v1": {
+      "label": "養生 v1（學生版）",
+      "mode": "wellness",
+      "note": "學生 Excel 公式：油脂×1 − 辣度×1 + 鹽分×1 + 澱粉×1 + 烹調×3。",
+      "terms": { "fat": 1, "spicy": -1, "salt": 1, "starch": 1, "cooking": 3 }
+    }
+  },
+
+  "lights": {
+    "_說明": "紅黃綠燈門檻（分數 >= green 為綠燈，>= yellow 為黃燈，其餘紅燈）。每個公式各自設定。",
+    "fitness_v1": { "green": 11, "yellow": 7 },
+    "fitness_v2": { "green": 13, "yellow": 9 },
+    "wellness_v1": { "green": 8, "yellow": 4 }
+  },
+
+  "price_ranges": ["100以下", "101-300", "301-500", "500以上"],
+
+  "defaults": {
+    "top_n": 3,
+    "budget": "301-500",
+    "max_spicy": 2,
+    "main_types": [],
+    "exclude_types": ["飲料類", "甜點類"]
+  },
+
+  "cleaning": {
+    "restaurant_aliases": {
+      "勝博店": "勝博殿",
+      "饗泰多": "饗泰多 SIAM MORE 泰式風格餐廳"
+    },
+    "main_type_aliases": {
+      "牛肉": "肉類"
+    }
+  }
+}

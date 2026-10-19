@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 「脂」字朱印：方形印框、陽文（白字）。字形以筆畫路徑繪製，不依賴字型。 -->
+  <rect x="3" y="3" width="58" height="58" rx="7" fill="#c8362b"/>
+  <rect x="8" y="8" width="48" height="48" rx="3" fill="none" stroke="#f6e7c8" stroke-width="2.5"/>
+  <g fill="none" stroke="#f6e7c8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- 月 -->
+    <path d="M16 47 L17 18 H28 V48 L25 46"/>
+    <path d="M17 27 H28 M17 36 H28"/>
+    <!-- 匕 -->
+    <path d="M35 15 V27 Q35 30 39 30 H48"/>
+    <path d="M47 18 L36 23"/>
+    <!-- 日 -->
+    <path d="M35 35 H48 V48 H35 Z M35 41.5 H48"/>
+  </g>
+</svg>

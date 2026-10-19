@@ -1,0 +1,18 @@
+{
+  "_說明": "micro:bit 加分零件的設定。改完存檔，重新啟動 fitwell serve（或拔插 micro:bit）就會生效，不用重新燒錄 micro:bit。",
+
+  "use_budget_knob": true,
+  "_use_budget_knob": "有接「預算旋鈕」（中間腳串 10kΩ 接 P4）才改成 true。旋鈕分 5 段：100以下、101-300、301-500、500以上、不限。沒接卻打開，預算會亂跳。",
+
+  "use_spicy_knob": true,
+  "_use_spicy_knob": "有接「辣度旋鈕」（中間腳串 10kΩ 接 P10）才改成 true。旋鈕分 7 段：不辣、1～5、都可以。沒接卻打開，辣度會亂跳。",
+
+  "buzzer": "passive",
+  "_buzzer": "外接蜂鳴器（P16）種類：\"passive\" 類比、\"active\" 數位、\"off\" 不要聲音。",
+
+  "servo_reverse": false,
+  "_servo_reverse": "伺服馬達指針方向相反（越健康越往左）時改成 true。",
+
+  "beep_ms": 150,
+  "_beep_ms": "蜂鳴器每一聲的長度（毫秒，30～500）。越長聽起來越大聲；嫌吵就調小。"
+}

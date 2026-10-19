@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>「脂」點迷津！外食族吃什麼—智慧營養選餐解憂亭</title>
+  <meta name="description" content="依健身或養生目標，從竹北遠百 12 家餐廳推薦最適合的 3 道菜，並與 micro:bit 燈號連動。">
+  <meta name="theme-color" content="#1e1b18">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/NotoSerifTC-Black-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=10">
+</head>
+<body>
+  <!-- 朱印的墨色不均：邊緣輕微侵蝕 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter>
+    <filter id="ink-sm"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.1"/></filter>
+  </svg>
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <!-- ========== 頂部：作品名稱｜全站模式｜連線狀態 ========== -->
+  <header class="top">
+    <div class="brand">
+      <span class="brand-seal" aria-hidden="true">脂</span>
+      <div class="brand-text">
+        <h1>「脂」點迷津！外食族吃什麼</h1>
+        <p>智慧營養選餐解憂亭</p>
+      </div>
+    </div>
+
+    <div class="mode-switch" role="radiogroup" aria-label="目前模式（影響推薦與我的餐盤）">
+      <span class="sr-only">目前模式</span>
+      <button type="button" class="mode" role="radio" data-mode="fitness" aria-checked="false">
+        <i data-lucide="dumbbell"></i><b>健身</b>
+      </button>
+      <button type="button" class="mode" role="radio" data-mode="wellness" aria-checked="false">
+        <i data-lucide="leaf"></i><b>養生</b>
+      </button>
+      <span class="info" tabindex="0" aria-label="模式說明">
+        <i data-lucide="info"></i>
+        <span class="tipcard tipcard-end" role="tooltip">
+          <b>健身</b>：高蛋白、低油優先。<br><b>養生</b>：清淡、低鹽、少辣優先。<br>
+          切換模式會同時改變「推薦」的計分公式與「我的餐盤」的評估標準。micro:bit 按 A 鍵也能切換。
+        </span>
+      </span>
+    </div>
+
+    <div class="status">
+      <span id="mb-status" class="stat off" tabindex="0">
+        <i data-lucide="cpu"></i><span class="stat-text">micro:bit</span><i class="stat-dot" aria-hidden="true"></i>
+        <span class="tipcard tipcard-end" role="tooltip" id="mb-tip">micro:bit 未連接</span>
+      </span>
+      <span id="ai-status" class="stat off" tabindex="0">
+        <i data-lucide="sparkles"></i><span class="stat-text">AI</span><i class="stat-dot" aria-hidden="true"></i>
+        <span class="tipcard tipcard-end" role="tooltip" id="ai-tip">AI 規則版</span>
+      </span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="功能">
+    <button class="tab active" role="tab" data-tab="recommend" aria-selected="true"><i data-lucide="scroll-text"></i>求籤推薦</button>
+    <button class="tab" role="tab" data-tab="tray" aria-selected="false"><i data-lucide="utensils"></i>我的餐盤<span id="tray-count" class="badge">0</span></button>
+    <button class="tab" role="tab" data-tab="coach" aria-selected="false"><i data-lucide="message-circle-heart"></i>AI 小教練</button>
+    <button class="tab" role="tab" data-tab="menu" aria-selected="false"><i data-lucide="book-open"></i>全部菜單</button>
+    <button class="tab" role="tab" data-tab="about" aria-selected="false"><i data-lucide="workflow"></i>怎麼運作</button>
+  </nav>
+
+  <main id="main">
+    <!-- ========== 求籤推薦 ========== -->
+    <section id="tab-recommend" class="panel active" role="tabpanel">
+      <div class="layout">
+        <form id="filters" class="filters" onsubmit="return false">
+          <fieldset class="mod">
+            <legend class="mod-head"><em>一</em>預算上限
+              <span class="info" tabindex="0" aria-label="預算說明"><i data-lucide="info"></i>
+                <span class="tipcard" role="tooltip">只推薦這個價位以內的餐點。順序和 micro:bit 預算旋鈕一樣：往右轉越貴，轉到底是「不限」。</span>
+              </span>
+            </legend>
+            <div id="budget-chips" class="chips"></div>
+          </fieldset>
+
+          <fieldset class="mod">
+            <legend class="mod-head"><em>二</em>可接受辣度
+              <span class="info" tabindex="0" aria-label="辣度說明"><i data-lucide="info"></i>
+                <span class="tipcard" role="tooltip">辣度 0～5 由學生實地標記。選 2 代表 2 辣以下都可以；轉辣度旋鈕也能選，轉到底是「都可以」。</span>
+              </span>
+            </legend>
+            <div id="spicy-chips" class="chips"></div>
+          </fieldset>
+
+          <fieldset class="mod">
+            <legend class="mod-head"><em>三</em>想吃的類型
+              <span class="info" tabindex="0" aria-label="類型說明"><i data-lucide="info"></i>
+                <span class="tipcard" role="tooltip">可以複選。全部不選就是「不限」。飲料和甜點不列入主餐推薦。</span>
+              </span>
+            </legend>
+            <div id="type-chips" class="chips"></div>
+          </fieldset>
+
+          <button id="go" type="button" class="go">
+            <svg class="go-tube" viewBox="0 0 40 48" aria-hidden="true">
+              <g class="sticks" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+                <path d="M14 20 L12 3"/><path d="M19 20 L19 1"/><path d="M24 20 L26 4"/><path d="M29 21 L32 7"/>
+              </g>
+              <path d="M8 18 H32 L30 45 H10 Z" fill="currentColor"/>
+              <path d="M11 25 H29 M11.6 39 H28.4" stroke="var(--red)" stroke-width="1.6"/>
+            </svg>
+            <span class="go-text">求籤</span>
+          </button>
+          <p class="hw-hint">
+            <i data-lucide="gamepad-2"></i>也能用 micro:bit 操作
+            <span class="info" tabindex="0" aria-label="micro:bit 操作方式"><i data-lucide="info"></i>
+              <span class="tipcard" role="tooltip"><b>A 鍵</b> 切換健身／養生<br><b>B 鍵</b> 求籤推薦<br><b>A+B</b> 切換預算<br><b>旋鈕</b> 左邊選預算、右邊選辣度</span>
+            </span>
+          </p>
+        </form>
+
+        <div class="results">
+          <ol id="flow" class="flow" aria-label="篩選流程：每一步剩下幾道"></ol>
+          <div id="result-head" class="result-head">
+            <div id="result-title" class="result-title">選好條件，按「求籤」</div>
+            <span id="result-formula" class="info" tabindex="0" aria-label="使用的計分公式" hidden><i data-lucide="sigma"></i>
+              <span class="tipcard tipcard-end" role="tooltip" id="result-formula-text"></span>
+            </span>
+          </div>
+          <div id="hints"></div>
+          <div id="cards" class="slips">
+            <div class="slips-empty">
+              <i data-lucide="scroll-text"></i>
+              <p>三支籤會出現在這裡</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 我的餐盤 ========== -->
+    <section id="tab-tray" class="panel" role="tabpanel">
+      <div class="tray-head mod">
+        <div class="mod-head"><em>盤</em>我的餐盤：整餐健康嗎？
+          <span class="info" tabindex="0" aria-label="餐盤說明"><i data-lucide="info"></i>
+            <span class="tipcard" role="tooltip">單點主餐很健康，但加了炸物、甜點，整餐可能就爆表。把籤或菜單裡的餐點「加入餐盤」，用目前模式的公式看整餐燈號。</span>
+          </span>
+          <span id="tray-mode" class="mode-tag"></span>
+        </div>
+        <div class="tray-body">
+          <div id="tray-seal" class="seal seal-lg" data-light=""></div>
+          <div class="tray-summary">
+            <div id="tray-summary" class="result-title">餐盤是空的</div>
+            <div class="meter" aria-hidden="true"><span id="tray-meter"></span></div>
+            <ul id="tray-warnings" class="warnings"></ul>
+          </div>
+          <button id="tray-clear" type="button" class="ghost"><i data-lucide="trash-2"></i>清空</button>
+        </div>
+      </div>
+      <div id="tray-items" class="slips slips-list"></div>
+    </section>
+
+    <!-- ========== AI 小教練 ========== -->
+    <section id="tab-coach" class="panel" role="tabpanel">
+      <div class="mod coach">
+        <div class="mod-head"><em>問</em>用一句話告訴我你想吃什麼
+          <span class="info" tabindex="0" aria-label="AI 小教練說明"><i data-lucide="info"></i>
+            <span class="tipcard" role="tooltip">AI 只會從學生調查的竹北遠百菜單裡挑選，不會編造餐點。沒有網路時會改用關鍵字規則。</span>
+          </span>
+        </div>
+        <form id="coach-form" class="coach-form">
+          <input id="coach-input" type="text" maxlength="200" aria-label="想吃什麼" placeholder="例如：剛打完球，想吃高蛋白但不要太油，300 元以內">
+          <button class="go go-sm" type="submit"><i data-lucide="send"></i>問問看</button>
+        </form>
+        <div class="chips examples">
+          <button type="button" class="chip" data-example="我剛跑完步，想吃高蛋白但不要太油，300 元以內"><i data-lucide="footprints"></i>跑完步</button>
+          <button type="button" class="chip" data-example="帶阿嬤吃飯，要清淡、不辣、好咬"><i data-lucide="heart-handshake"></i>帶阿嬤</button>
+          <button type="button" class="chip" data-example="想吃海鮮，養生一點，不要辣"><i data-lucide="fish"></i>清淡海鮮</button>
+          <button type="button" class="chip" data-example="100 元以內有什麼健康的"><i data-lucide="coins"></i>100 元以內</button>
+        </div>
+      </div>
+      <div id="coach-out" aria-live="polite"></div>
+    </section>
+
+    <!-- ========== 全部菜單 ========== -->
+    <section id="tab-menu" class="panel" role="tabpanel">
+      <div class="mod">
+        <div class="menu-tools">
+          <label class="field"><i data-lucide="sigma"></i><select id="menu-formula" aria-label="計分公式"></select></label>
+          <label class="field grow"><i data-lucide="search"></i><input id="menu-search" type="search" placeholder="搜尋餐廳、菜名或類型"></label>
+          <span id="menu-count" class="count"></span>
+        </div>
+        <div class="table-wrap">
+          <table id="menu-table">
+            <thead><tr><th>燈號</th><th class="num">分數</th><th>餐廳</th><th>餐點</th><th>價格</th><th>類型</th><th>烹調</th><th class="num">辣</th><th>標籤</th><th><span class="sr-only">加入餐盤</span></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 怎麼運作 ========== -->
+    <section id="tab-about" class="panel" role="tabpanel">
+      <div class="about">
+        <div class="mod">
+          <div class="mod-head"><em>流</em>推薦流程（學生設計的流程圖）</div>
+          <ol class="flowchart">
+            <li><i data-lucide="toggle-right"></i>選擇模式：健身 或 養生</li>
+            <li><i data-lucide="calculator"></i>用該模式的加權公式，幫每道餐點算分數</li>
+            <li><i data-lucide="arrow-down-wide-narrow"></i>依分數從高排到低</li>
+            <li><i data-lucide="wallet"></i>超出預算？→ 不加入候選</li>
+            <li><i data-lucide="flame"></i>超出可接受辣度？→ 不加入候選</li>
+            <li><i data-lucide="salad"></i>不符合主餐類型？→ 不加入候選</li>
+            <li><i data-lucide="traffic-cone"></i>取前 3 名，亮起 綠／黃／紅 燈</li>
+            <li><i data-lucide="lightbulb"></i>不足 3 道？→ 提示可以放寬哪個條件</li>
+          </ol>
+        </div>
+        <div class="mod">
+          <div class="mod-head"><em>式</em>加權公式</div>
+          <div id="formulas" class="formulas"></div>
+        </div>
+        <div class="mod">
+          <div class="mod-head"><em>資</em>資料來源</div>
+          <p class="about-text">學生親自到竹北遠百調查了 <b>12</b> 家餐廳、<b>231</b> 道餐點，並幫每道菜標記油脂、蛋白質、鹽分、澱粉、辣度與烹調方式。</p>
+          <details class="report"><summary><i data-lucide="file-text"></i>查看資料檢查報告</summary><pre id="report"></pre></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 虛擬 micro:bit：沒有硬體時也能展示（預設收合） -->
+  <aside id="vmb" class="vmb" aria-label="虛擬 micro:bit">
+    <div id="vmb-body" class="vmb-body" hidden>
+      <div class="vmb-title"><i data-lucide="cpu"></i>虛擬 micro:bit
+        <span class="info" tabindex="0" aria-label="虛擬 micro:bit 說明"><i data-lucide="info"></i>
+          <span class="tipcard tipcard-end tipcard-up" role="tooltip">沒有接硬體時，用這塊模擬板示範。按鈕送出的指令和真的 micro:bit 一模一樣。</span>
+        </span>
+      </div>
+      <div class="vmb-board">
+        <button type="button" class="vmb-btn" id="vmb-a" aria-label="A 鍵：切換模式">A</button>
+        <div id="vmb-grid" class="vmb-grid" aria-hidden="true"></div>
+        <button type="button" class="vmb-btn" id="vmb-b" aria-label="B 鍵：求籤">B</button>
+      </div>
+      <button type="button" class="vmb-ab" id="vmb-ab"><i data-lucide="wallet"></i>A+B 切換預算</button>
+      <div class="vmb-leds" aria-hidden="true"><i id="led-green" class="green"></i><i id="led-yellow" class="yellow"></i><i id="led-red" class="red"></i></div>
+      <div id="vmb-log" class="vmb-log" aria-live="off"></div>
+    </div>
+    <button id="vmb-toggle" type="button" class="vmb-toggle" aria-expanded="false" aria-controls="vmb-body">
+      <i data-lucide="cpu"></i><span class="vmb-label">虛擬 micro:bit</span><i data-lucide="chevron-up" class="vmb-chev"></i>
+    </button>
+  </aside>
+
+  <script src="vendor/lucide-0.468.0.min.js"></script>
+  <script src="vendor/gsap-3.13.0.min.js"></script>
+  <script src="app.js?v=10"></script>
+</body>
+</html>

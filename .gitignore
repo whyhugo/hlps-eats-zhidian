@@ -1,0 +1,33 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Node（只用於開發工具，執行專案不需要）
+node_modules/
+
+# 系統檔
+.DS_Store
+Thumbs.db
+
+# 祕密設定（API 金鑰等）；範本見 .env.example
+.env
+
+# 含學生個資的原始檔（姓名、班級）：只留在本機，公開版用 docs/images/flowchart_*.jpg（已遮蔽）
+docs/images/flowchart_student_*.jpg
+
+# 參考資料與對話紀錄（不公開）
+docs/reference/
+
+# 編輯器與 Claude Code 個人設定
+.vscode/
+.idea/
+.claude/settings.local.json
+
+# impeccable 設計工具的暫存與草稿（只保留設計系統 sidecar）
+.impeccable/*
+!.impeccable/design.json

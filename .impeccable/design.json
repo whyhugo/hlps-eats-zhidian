@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T18:48:07+00:00",
+  "title": "Design System: 「脂」點迷津！外食族吃什麼—智慧營養選餐解憂亭",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "墨",
+        "canonical": "oklch(22.4% 0.007 67.4)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#262320",
+          "#423f3c",
+          "#605d59",
+          "#837f7c",
+          "#a8a4a0",
+          "#cecac5",
+          "#f2eee9"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "墨・二",
+        "canonical": "oklch(26.8% 0.012 67.3)",
+        "tonalRamp": [
+          "#0f0a06",
+          "#28231e",
+          "#443f39",
+          "#625c57",
+          "#857f79",
+          "#aaa39d",
+          "#d0c9c3",
+          "#f4ede6"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "墨・三",
+        "canonical": "oklch(32.6% 0.016 67.2)",
+        "tonalRamp": [
+          "#100a05",
+          "#29231c",
+          "#463e37",
+          "#645c54",
+          "#877f77",
+          "#aba39a",
+          "#d2c9c0",
+          "#f6ede4"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "籤紙",
+        "canonical": "oklch(93.2% 0.044 85.2)",
+        "tonalRamp": [
+          "#130900",
+          "#2e2208",
+          "#4a3e24",
+          "#695c41",
+          "#8c7f62",
+          "#b1a386",
+          "#d8c9ab",
+          "#fcedce"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "籤紙・二",
+        "canonical": "oklch(96.6% 0.025 86.9)",
+        "tonalRamp": [
+          "#100a01",
+          "#292316",
+          "#453f31",
+          "#645d4e",
+          "#87806f",
+          "#aba493",
+          "#d2cab8",
+          "#f6eedc"
+        ]
+      },
+      "paper-3": {
+        "role": "neutral",
+        "displayName": "籤紙・三",
+        "canonical": "oklch(98.6% 0.014 84.6)",
+        "tonalRamp": [
+          "#0e0b05",
+          "#27241c",
+          "#433f37",
+          "#615d55",
+          "#848077",
+          "#a9a49b",
+          "#cfcac0",
+          "#f3eee4"
+        ]
+      },
+      "on-ink": {
+        "role": "neutral",
+        "displayName": "墨底主字（同籤紙）",
+        "canonical": "oklch(93.2% 0.044 85.2)",
+        "tonalRamp": [
+          "#130900",
+          "#2e2208",
+          "#4a3e24",
+          "#695c41",
+          "#8c7f62",
+          "#b1a386",
+          "#d8c9ab",
+          "#fcedce"
+        ]
+      },
+      "on-ink-2": {
+        "role": "neutral",
+        "displayName": "舊紙墨字",
+        "canonical": "oklch(83.5% 0.052 84.5)",
+        "tonalRamp": [
+          "#140900",
+          "#302101",
+          "#4d3d1d",
+          "#6b5b3b",
+          "#8f7e5c",
+          "#b4a380",
+          "#dac8a4",
+          "#ffecc7"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "淡墨",
+        "canonical": "oklch(44.7% 0.025 67.1)",
+        "tonalRamp": [
+          "#120902",
+          "#2c2217",
+          "#493d32",
+          "#675b4f",
+          "#8b7e71",
+          "#b0a295",
+          "#d6c8ba",
+          "#faecdd"
+        ]
+      },
+      "line-soft": {
+        "role": "neutral",
+        "displayName": "淡墨線",
+        "canonical": "rgb(30 27 24 / 22%)"
+      },
+      "red": {
+        "role": "primary",
+        "displayName": "朱砂印泥紅",
+        "canonical": "oklch(55.4% 0.185 28.8)",
+        "tonalRamp": [
+          "#220000",
+          "#4a0202",
+          "#7a0a07",
+          "#ae1611",
+          "#d84639",
+          "#fd7464",
+          "#feb5aa",
+          "#ffe9e5"
+        ]
+      },
+      "red-ink": {
+        "role": "primary",
+        "displayName": "深朱",
+        "canonical": "oklch(48.4% 0.165 29.1)",
+        "tonalRamp": [
+          "#220000",
+          "#4c0000",
+          "#7d0000",
+          "#a7281e",
+          "#d05042",
+          "#fb7666",
+          "#fdb6ab",
+          "#ffe9e5"
+        ]
+      },
+      "red-tint": {
+        "role": "primary",
+        "displayName": "淡朱籤紙",
+        "canonical": "oklch(89.6% 0.038 47.4)",
+        "tonalRamp": [
+          "#170601",
+          "#331e14",
+          "#513a2e",
+          "#70574b",
+          "#947a6d",
+          "#b99e91",
+          "#e0c4b6",
+          "#ffeadf"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "描金",
+        "canonical": "oklch(66.3% 0.120 80.3)",
+        "tonalRamp": [
+          "#140800",
+          "#322000",
+          "#533b06",
+          "#79570f",
+          "#a57711",
+          "#cb9c43",
+          "#f3c26a",
+          "#feecce"
+        ]
+      },
+      "green": {
+        "role": "tertiary",
+        "displayName": "宜食綠",
+        "canonical": "oklch(53.2% 0.094 161.7)",
+        "tonalRamp": [
+          "#001006",
+          "#002c1b",
+          "#044c32",
+          "#1c6e4d",
+          "#45926e",
+          "#6bb792",
+          "#91deb7",
+          "#c3ffdf"
+        ]
+      },
+      "yellow": {
+        "role": "tertiary",
+        "displayName": "適量黃",
+        "canonical": "oklch(62.6% 0.125 70.4)",
+        "tonalRamp": [
+          "#170700",
+          "#361e00",
+          "#593806",
+          "#80530f",
+          "#ae7111",
+          "#d69643",
+          "#febc6a",
+          "#feebd5"
+        ]
+      },
+      "yellow-ink": {
+        "role": "tertiary",
+        "displayName": "適量黃・墨",
+        "canonical": "oklch(50.8% 0.103 71.2)",
+        "tonalRamp": [
+          "#170600",
+          "#351e00",
+          "#5a3700",
+          "#815200",
+          "#a77532",
+          "#cd9958",
+          "#f5bf7e",
+          "#feebd6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "第一籤的菜名；窄螢幕 24px。"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "頂部作品名；求籤按鈕同字族 26px、字距 0.4em。"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "結果標題、餐盤總結、一般籤菜名、籤條。"
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "篩選流程剩餘道數；分數放大至 40px／52px。"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "預設內文與模組標頭（700）；說明段落 17px。"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "條件籤、餐廳、標籤、狀態、單位、資訊卡。"
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "加權公式與資料報告。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "slip",
+        "value": "0 1px 0 rgb(30 27 24 / 8%), 0 8px 24px -12px rgb(30 27 24 / 28%)",
+        "purpose": "籤、資訊卡、虛擬 micro:bit；模組與條件籤不使用。"
+      }
+    ],
+    "focus": {
+      "value": "outline: 3px solid #c8362b; outline-offset: 2px",
+      "purpose": "全站焦點框；欄位用 :focus-within。"
+    },
+    "filters": [
+      {
+        "name": "ink",
+        "value": "feTurbulence fractalNoise baseFrequency 0.9 numOctaves 2 seed 7 + feDisplacementMap scale 2.2",
+        "purpose": "朱印邊緣的印泥不均質感，只用於 .seal。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.22, 1, .36, 1)",
+        "purpose": "CSS 狀態轉換與浮層。"
+      },
+      {
+        "name": "duration-state",
+        "value": "0.15s–0.2s",
+        "purpose": "按鈕、條件籤、分頁的變色。"
+      },
+      {
+        "name": "duration-tip",
+        "value": "0.18s",
+        "purpose": "資訊卡淡入並位移 4px。"
+      },
+      {
+        "name": "draw-shake",
+        "value": "rotation 14deg, 0.07s × 6 yoyo, sine.inOut",
+        "purpose": "求籤：籤筒搖動。"
+      },
+      {
+        "name": "draw-slips",
+        "value": "from y 70px, autoAlpha 0, rotation -2.5/2/-1.5deg; 0.6s, stagger 0.14s, power3.out",
+        "purpose": "求籤：三支籤依序升起。"
+      },
+      {
+        "name": "draw-seal",
+        "value": "from scale 1.9, autoAlpha 0; 0.32s, stagger 0.14s, back.out(2.2)",
+        "purpose": "求籤：朱印蓋下。"
+      },
+      {
+        "name": "number-roll",
+        "value": "0.7s power2.out, snap 1",
+        "purpose": "篩選流程數字逐位滾動。"
+      },
+      {
+        "name": "pop",
+        "value": "scale 0.9→1 (0.35s) / 1.5→1 (0.4s), back.out(3)",
+        "purpose": "模式籤牌切換、餐盤徽章更新。"
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce → 直接顯示最終狀態",
+        "purpose": "所有 GSAP 動態的必要降級。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "1100px"
+      },
+      {
+        "name": "phone",
+        "value": "600px"
+      }
+    ],
+    "assets": {
+      "serifFont": "web/fonts/NotoSerifTC-Black-subset.woff2 (family \"Jieyou Serif\", 900, subset)",
+      "icons": "web/vendor/lucide-0.468.0.min.js",
+      "motion": "web/vendor/gsap-3.13.0.min.js",
+      "favicon": "web/favicon.svg（「脂」字朱印，筆畫路徑繪製）"
+    }
+  },
+  "components": [
+    {
+      "name": "求籤按鈕",
+      "kind": "button",
+      "refersTo": "button-draw",
+      "description": "主要動作：朱紅實心、粗宋體大字、左側籤筒圖。每個畫面最多一個。",
+      "html": "<button class=\"ds-go\"><svg class=\"ds-go-tube\" viewBox=\"0 0 40 48\" aria-hidden=\"true\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"><path d=\"M14 20 L12 3\"/><path d=\"M19 20 L19 1\"/><path d=\"M24 20 L26 4\"/><path d=\"M29 21 L32 7\"/></g><path d=\"M8 18 H32 L30 45 H10 Z\" fill=\"currentColor\"/><path d=\"M11 25 H29 M11.6 39 H28.4\" stroke=\"#c8362b\" stroke-width=\"1.6\"/></svg><span>求籤</span></button>",
+      "css": ".ds-go { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-width: 300px; border: 1.5px solid var(--ink, #1e1b18); background: var(--red, #c8362b); color: var(--paper-3, #fffaf0); padding: 14px; font: 900 26px/1 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; letter-spacing: .4em; border-radius: 0; transition: background-color .15s, translate .15s; cursor: pointer; } .ds-go span { padding-left: .4em; } .ds-go-tube { width: 34px; height: 42px; color: var(--paper, #f6e7c8); overflow: visible; } .ds-go:hover { background: var(--red-ink, #a8291f); } .ds-go:active { translate: 0 1px; } .ds-go:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost 按鈕",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "次要動作（加入餐盤、清空）：墨框透明底，hover 反轉。",
+      "html": "<button class=\"ds-ghost\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/></svg>加入餐盤</button>",
+      "css": ".ds-ghost { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--ink, #1e1b18); background: transparent; color: var(--ink, #1e1b18); padding: 6px 12px; font: 15px/1.6 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; border-radius: 0; transition: background-color .15s, color .15s; cursor: pointer; } .ds-ghost:hover { background: var(--ink, #1e1b18); color: var(--paper, #f6e7c8); } .ds-ghost:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "條件籤",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "預算、辣度、類型的選項；選取時反轉為墨底，收尾選項用虛線。",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/></svg>100以下</button><button class=\"ds-chip is-on\" aria-pressed=\"true\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/></svg>101-300</button><button class=\"ds-chip ds-chip-end\">不限</button></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--ink, #1e1b18); background: var(--paper-3, #fffaf0); color: var(--ink, #1e1b18); padding: 6px 13px; font: 15px/1.6 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; border-radius: 0; transition: background-color .15s, color .15s; cursor: pointer; } .ds-chip svg { color: var(--red, #c8362b); } .ds-chip:hover { background: var(--red-tint, #f3d6c8); } .ds-chip.is-on { background: var(--ink, #1e1b18); color: var(--paper, #f6e7c8); } .ds-chip.is-on svg { color: var(--paper, #f6e7c8); } .ds-chip-end { border-style: dashed; } .ds-chip:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "模式籤牌",
+      "kind": "nav",
+      "refersTo": "mode-toggle",
+      "description": "頂部墨黑殼層上的全站模式切換：金框內兩支籤牌，啟用者填朱紅。",
+      "html": "<div class=\"ds-shell\"><div class=\"ds-modes\" role=\"radiogroup\" aria-label=\"模式\"><button class=\"ds-mode is-on\" role=\"radio\" aria-checked=\"true\"><b>健身</b></button><button class=\"ds-mode\" role=\"radio\" aria-checked=\"false\"><b>養生</b></button></div></div>",
+      "css": ".ds-shell { background: var(--ink, #1e1b18); padding: 14px 24px; display: inline-block; } .ds-modes { display: flex; border: 1.5px solid var(--gold, #b98a2e); padding: 3px; } .ds-mode { border: 0; margin: 0 2px; background: transparent; color: var(--paper, #f6e7c8); padding: 10px 24px; box-shadow: inset 0 0 0 1px rgb(185 138 46 / 45%); cursor: pointer; transition: background-color .2s cubic-bezier(.22,1,.36,1), color .2s cubic-bezier(.22,1,.36,1); } .ds-mode b { font: 900 19px/1 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; letter-spacing: .12em; } .ds-mode:hover { background: var(--ink-3, #3a332c); } .ds-mode.is-on { background: var(--red, #c8362b); color: var(--paper-3, #fffaf0); box-shadow: inset 0 0 0 3px var(--red, #c8362b), inset 0 0 0 4px var(--gold, #b98a2e); translate: 0 -1px; } .ds-mode:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "分頁列",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "墨・二底的分頁，啟用為米白粗體＋朱紅底線。",
+      "html": "<nav class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab is-on\" role=\"tab\" aria-selected=\"true\">求籤推薦</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">我的餐盤<span class=\"ds-badge\">2</span></button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">怎麼運作</button></nav>",
+      "css": ".ds-tabs { display: flex; gap: 2px; background: var(--ink-2, #2a2520); padding: 0 24px; } .ds-tab { display: inline-flex; align-items: center; gap: 8px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--on-ink-2, #d9c7a3); padding: 12px 20px 11px; font: 16px/1.6 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; cursor: pointer; transition: color .2s, border-color .2s; } .ds-tab:hover { color: var(--paper, #f6e7c8); } .ds-tab.is-on { color: var(--paper-3, #fffaf0); border-bottom-color: var(--red, #c8362b); font-weight: 700; } .ds-tab:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; } .ds-badge { min-width: 22px; padding: 0 6px; background: var(--red, #c8362b); color: var(--paper-3, #fffaf0); font-size: 13px; line-height: 22px; text-align: center; border-radius: 11px; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "模組",
+      "kind": "card",
+      "refersTo": "module",
+      "description": "所有區塊的容器：細墨框方形、標頭一個字的朱紅籤頭、資訊鈕在右。",
+      "html": "<section class=\"ds-mod\"><div class=\"ds-mod-head\"><em>一</em>預算上限<span class=\"ds-info\" tabindex=\"0\" aria-label=\"說明\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg></span></div><div class=\"ds-mod-body\">模組內容 14px 留白。</div></section>",
+      "css": ".ds-mod { border: 1px solid var(--ink, #1e1b18); background: var(--paper-2, #fbf3e1); color: var(--ink, #1e1b18); max-width: 340px; font: 16px/1.6 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; } .ds-mod-head { display: flex; align-items: center; gap: 10px; font-weight: 700; padding: 9px 14px; border-bottom: 1px solid var(--ink, #1e1b18); } .ds-mod-head em { font: 900 14px/1 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; font-style: normal; background: var(--red, #c8362b); color: var(--paper-3, #fffaf0); padding: 4px 7px; } .ds-info { margin-left: auto; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: var(--muted, #5e5246); cursor: help; } .ds-info:hover, .ds-info:focus-visible { color: var(--red-ink, #a8291f); } .ds-info:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; } .ds-mod-body { padding: 14px; }"
+    },
+    {
+      "name": "AI 輸入框",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "米白底、墨框方角；焦點為朱紅外框。",
+      "html": "<label class=\"ds-field\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input type=\"search\" placeholder=\"搜尋餐廳、菜名或類型\"></label>",
+      "css": ".ds-field { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--ink, #1e1b18); background: var(--paper-3, #fffaf0); padding: 0 12px; min-width: 320px; } .ds-field svg { color: var(--red, #c8362b); } .ds-field input { flex: 1; border: 0; background: transparent; padding: 12px 2px; font: 17px/1.4 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; color: var(--ink, #1e1b18); outline: none; } .ds-field input::placeholder { color: var(--muted, #5e5246); } .ds-field:focus-within { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; }"
+    },
+    {
+      "name": "籤（第一籤）",
+      "kind": "custom",
+      "refersTo": "slip-first",
+      "description": "招牌元件：朱紅籤條、粗宋體菜名與大分數、右側朱印燈號；第一籤底色淡朱。",
+      "html": "<article class=\"ds-slip\"><div class=\"ds-slip-band\"><span>第一籤</span><span>上籤</span></div><div class=\"ds-slip-body\"><div class=\"ds-slip-rest\">某餐廳</div><h3 class=\"ds-slip-name\">鹽烤雞胸餐</h3><div class=\"ds-slip-row\"><div class=\"ds-score\"><b>86</b>分</div><div class=\"ds-seal\" data-light=\"green\" role=\"img\" aria-label=\"綠燈，宜食\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m9 12 2 2 4-4\"/></svg><span>綠燈<br>宜食</span></div></div></div></article>",
+      "css": ".ds-slip { width: 340px; border: 1.5px solid var(--ink, #1e1b18); background: var(--red-tint, #f3d6c8); color: var(--ink, #1e1b18); box-shadow: 0 1px 0 rgb(30 27 24 / 8%), 0 8px 24px -12px rgb(30 27 24 / 28%); font: 16px/1.6 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; } .ds-slip-band { display: flex; justify-content: space-between; background: var(--red, #c8362b); color: var(--paper-3, #fffaf0); padding: 10px 18px; font: 900 21px/1.2 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; letter-spacing: .12em; } .ds-slip-body { padding: 14px 20px 18px; display: flex; flex-direction: column; gap: 8px; } .ds-slip-rest { font-size: 14px; color: var(--muted, #5e5246); } .ds-slip-name { margin: 0; font: 900 30px/1.3 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; } .ds-slip-row { display: flex; align-items: center; } .ds-score { font-size: 15px; } .ds-score b { font: 900 52px/1 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; font-variant-numeric: tabular-nums; } .ds-seal { --c: var(--green, #2f7d5b); margin-left: auto; width: 88px; height: 88px; border: 3px solid var(--c); color: var(--c); display: grid; place-items: center; align-content: center; text-align: center; rotate: -8deg; font: 900 19px/1.1 \"Jieyou Serif\", \"Noto Serif TC\", \"Songti TC\", serif; background: rgb(255 250 240 / 70%); box-shadow: inset 0 0 0 2px rgb(255 250 240 / 70%), inset 0 0 0 3.5px var(--c); transition: rotate .2s cubic-bezier(.22,1,.36,1); } .ds-seal svg { width: 24px; height: 24px; margin-bottom: 2px; } .ds-seal[data-light=yellow] { --c: var(--yellow-ink, #8a5a10); } .ds-seal[data-light=red] { --c: var(--red, #c8362b); } .ds-slip:hover .ds-seal { rotate: -5deg; }"
+    },
+    {
+      "name": "資訊卡",
+      "kind": "custom",
+      "refersTo": "tipcard",
+      "description": "墨底金框浮層；hover／focus 資訊鈕時淡入。",
+      "html": "<span class=\"ds-tip-wrap\" tabindex=\"0\" aria-label=\"說明\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg><span class=\"ds-tip\" role=\"tooltip\"><b>健身</b>：高蛋白、低油優先。</span></span>",
+      "css": ".ds-tip-wrap { position: relative; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: var(--muted, #5e5246); cursor: help; margin: 0 0 90px 120px; } .ds-tip-wrap:focus-visible { outline: 3px solid var(--red, #c8362b); outline-offset: 2px; } .ds-tip { position: absolute; left: 50%; top: calc(100% + 8px); width: max-content; max-width: 300px; translate: -50% -4px; background: var(--ink, #1e1b18); color: var(--paper, #f6e7c8); border: 1px solid var(--gold, #b98a2e); padding: 12px 14px; font: 15px/1.65 \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", system-ui, sans-serif; box-shadow: 0 1px 0 rgb(30 27 24 / 8%), 0 8px 24px -12px rgb(30 27 24 / 28%); opacity: 0; visibility: hidden; transition: opacity .18s cubic-bezier(.22,1,.36,1), translate .18s cubic-bezier(.22,1,.36,1), visibility .18s; } .ds-tip b { color: var(--paper-3, #fffaf0); } .ds-tip-wrap:is(:hover, :focus-visible) > .ds-tip { opacity: 1; visibility: visible; translate: -50% 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "籤詩解憂亭",
+    "overview": "**Creative North Star: \"籤詩解憂亭\"**\n\n這套系統把一個資料透明的營養推薦，包裝成台灣人熟悉的「求籤、解籤」儀式：按下「求籤」，籤筒搖動，三支籤由下往上抽出，最後蓋上朱印燈號。整個畫面是一座小亭子：墨黑的殼層（頂部橫條、分頁列、資訊卡）框住米黃的籤紙工作區，朱紅是唯一會「說話」的顏色。\n\n密度偏高、像日式資訊網頁：每個區塊都是 1px 墨線框住的方形模組，左上一個朱紅小籤頭標號，模組之間靠框線和留白分隔，而不是靠陰影或圓角卡片。標題、分數、籤名用極粗的宋體（楷明風），讓結果讀起來像一支籤；所有需要閱讀的說明文字則回到黑體，保持在 60–80 公分距離也清楚。\n\n已確認拒絕的方向：一般「白底圓角卡片儀表板」式點餐介面。",
+    "keyCharacteristics": [
+      "墨黑殼層＋米黃籤紙＋唯一的朱紅，金色只當框線。",
+      "方角、細墨線、平面模組；只有「籤」和浮層會浮起。",
+      "燈號一律是朱印：方框、微旋轉、圖示＋文字，從不只靠顏色。",
+      "粗宋體只給名字、數字、籤頭與印文；說明用黑體。",
+      "一個招牌動作：求籤（搖筒→抽籤→蓋印），其他動態都很短很安靜。"
+    ],
+    "rules": [
+      {
+        "name": "The One Vermilion Rule",
+        "body": "朱紅是唯一主色。不要引入第二個強調色；需要「更強調」時用更大的朱紅面積或朱印，而不是新的顏色。",
+        "section": "colors"
+      },
+      {
+        "name": "The Gold Thread Rule",
+        "body": "金色只是一條線：框線、內框、虛線框。金色不做底色面積，也不做文字。",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink-for-Text Rule",
+        "body": "黃燈與紅色文字在米黃底上一律用 `yellow-ink`／`red-ink`；`yellow` 與 `red` 只用在填色、印框和墨底上。",
+        "section": "colors"
+      },
+      {
+        "name": "The Brush-for-Verdicts Rule",
+        "body": "粗宋體只給名字、數字、籤頭、印文與「求籤」動作。任何需要讀完一整句的文字都用黑體。",
+        "section": "typography"
+      },
+      {
+        "name": "The Subset Rule",
+        "body": "Jieyou Serif 是字型子集。新增任何用宋體顯示的字之前，先確認它在子集裡（或重新產生子集），否則會掉回系統宋體、筆畫粗細不一致。",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "會變動的數字（分數、剩餘道數、徽章、價格欄）一律 `tabular-nums`，翻動時不跳動。",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper-on-Paper Rule",
+        "body": "模組、條件籤、流程列、表格都是平的。陰影只屬於「籤」與浮層；不要為了強調而給模組加陰影。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** 讓朱紅 (`#c8362b`) 成為畫面上唯一的強調色，主動作、啟用狀態、籤頭、紅燈都用它。",
+      "**Do** 把每個新區塊做成 1px 墨框的方形模組，左上放一個字的朱紅籤頭，說明收進右側資訊鈕。",
+      "**Do** 用朱印呈現任何燈號判斷：方印、−8° 旋轉、圖示＋「X燈／判語」，永遠不只靠顏色。",
+      "**Do** 名字與數字用 Jieyou Serif 900，句子用黑體 16–17px；變動數字加 `tabular-nums`。",
+      "**Do** 在米黃底上的紅、黃文字改用 `red-ink` (`#a8291f`)、`yellow-ink` (`#8a5a10`)。",
+      "**Do** 所有 GSAP 動態都檢查 `prefers-reduced-motion`，降級為直接顯示最終狀態。",
+      "**Do** 第三方函式庫與字型放在本機（`web/vendor`、`web/fonts`），展場可能離線。"
+    ],
+    "donts": [
+      "**Don't** 做成白底、圓角、陰影卡片的點餐儀表板。",
+      "**Don't** 引入第二個強調色，或把金色當底色、文字色使用。",
+      "**Don't** 給模組、條件籤或表格加陰影或圓角；陰影只屬於籤與浮層。",
+      "**Don't** 把籤頭做成標題上方獨立一行的小標（kicker／eyebrow）；它永遠與標題同一行、只有一個字或一個數字。",
+      "**Don't** 用 emoji 取代 Lucide 圖示，除非情境真的無法用圖示表達。",
+      "**Don't** 用 Jieyou Serif 顯示子集裡沒有的字。"
+    ]
+  }
+}
