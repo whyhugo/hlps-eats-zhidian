@@ -19,3 +19,9 @@ binding = "ASSETS"
 name = "COACH_LIMITER"
 namespace_id = "1001"
 simple = { limit = 10, period = 60 }
+
+# 預覽版本（PR／非 main 分支，由 `wrangler preview` 部署）用自己的限流計數，不和正式網站共用
+[[previews.ratelimits]]
+name = "COACH_LIMITER"
+namespace_id = "1002"
+simple = { limit = 10, period = 60 }
