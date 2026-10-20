@@ -1,21 +1,23 @@
 // Gemini Interactions API（REST）— 和 src/fitwell/ai_coach.py 的 ai_settings／interaction_request／output_text 相同。
 // 設定都可以在 Cloudflare Worker 的 Variables and Secrets 改，不用改程式：
 //   GEMINI_API_KEY            Gemini API 金鑰（Secret）
-//   FITWELL_AI_MODEL          模型，預設 models/gemini-3.8-flash
+//   FITWELL_AI_MODEL          模型，預設 gemini-3.8-flash（寫成 models/gemini-3.8-flash 也可以，會自動去掉前綴）
 //   FITWELL_AI_THINKING       思考程度 minimal／low／medium／high，預設 low（越高越慢越貴）
 //   FITWELL_AI_MAX_TOKENS     每次回覆最多幾個 token（含思考），預設 8192
 //   FITWELL_AI_GOOGLE_SEARCH  1 = 允許模型用 Google 搜尋補充說明（會多收費），預設 0
 
-export const DEFAULT_MODEL = "models/gemini-3.8-flash";
+export const DEFAULT_MODEL = "gemini-3.8-flash"; // Interactions API 的模型名稱沒有 models/ 前綴
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/interactions";
 
 export function aiSettings(env) {
   let thinking = String(env.FITWELL_AI_THINKING || "low").toLowerCase();
   if (!["minimal", "low", "medium", "high"].includes(thinking)) thinking = "low";
-  let maxTokens = parseInt(env.FITWELL_AI_MAX_TOKENS || "8192", 10);
-  if (!Number.isFinite(maxTokens)) maxTokens = 8192;
+  const raw = String(env.FITWELL_AI_MAX_TOKENS ?? "").trim();
+  // 只接受整串都是數字（和 Python 版一樣嚴格；打錯字就用預設值，避免意外放大花費）
+  const maxTokens = /^[0-9]+$/.test(raw) ? Number(raw) : 8192;
+  const model = String(env.FITWELL_AI_MODEL ?? "").trim().replace(/^models\//, "") || DEFAULT_MODEL;
   return {
-    model: env.FITWELL_AI_MODEL || DEFAULT_MODEL,
+    model,
     thinking_level: thinking,
     max_output_tokens: Math.max(256, Math.min(65536, maxTokens)),
     google_search: ["1", "true", "yes"].includes(String(env.FITWELL_AI_GOOGLE_SEARCH || "0").toLowerCase()),

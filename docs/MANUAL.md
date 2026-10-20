@@ -372,7 +372,7 @@ AI 金鑰放在 `.dev.vars`（格式同 `.env`，已加入 `.gitignore`）。
 | 變數 | 預設 | 說明 |
 |---|---|---|
 | `GEMINI_API_KEY` | （無） | Gemini API 金鑰。沒設定時 AI 小教練改用關鍵字規則 |
-| `FITWELL_AI_MODEL` | `models/gemini-3.8-flash` | 使用的模型 |
+| `FITWELL_AI_MODEL` | `gemini-3.8-flash` | 使用的模型（寫成 `models/…` 也可以，會自動去掉前綴） |
 | `FITWELL_AI_THINKING` | `low` | 思考程度：`minimal`／`low`／`medium`／`high`。越高回答越周到，但越慢越貴；挑菜這種任務 `low` 就夠 |
 | `FITWELL_AI_MAX_TOKENS` | `8192` | 每次回覆最多幾個 token（含思考），用來限制單次花費 |
 | `FITWELL_AI_GOOGLE_SEARCH` | `0` | 設成 `1` 讓模型可以用 Google 搜尋補充說明（會多收費）。推薦只會從我們的菜單挑，通常不需要 |

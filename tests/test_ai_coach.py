@@ -17,6 +17,11 @@ ENVS = [
     {"FITWELL_AI_MODEL": "models/x", "FITWELL_AI_THINKING": "HIGH", "FITWELL_AI_MAX_TOKENS": "100",
      "FITWELL_AI_GOOGLE_SEARCH": "1"},
     {"FITWELL_AI_THINKING": "weird", "FITWELL_AI_MAX_TOKENS": "abc"},
+    {"FITWELL_AI_MODEL": "models/gemini-3.5-flash", "FITWELL_AI_MAX_TOKENS": "99999oops"},
+    {"FITWELL_AI_MODEL": "  ", "FITWELL_AI_MAX_TOKENS": " 2048 "},
+    {"FITWELL_AI_MAX_TOKENS": "1_000"},
+    {"FITWELL_AI_MAX_TOKENS": "+500"},
+    {"FITWELL_AI_MAX_TOKENS": "99999"},
 ]
 INTERACTION = {
     "status": "completed",
@@ -29,11 +34,16 @@ INTERACTION = {
 
 def test_settings_and_request():
     s = ai_settings({})
-    assert s == {"model": "models/gemini-3.8-flash", "thinking_level": "low", "max_output_tokens": 8192,
+    assert s == {"model": "gemini-3.8-flash", "thinking_level": "low", "max_output_tokens": 8192,
                  "google_search": False}
     s2 = ai_settings(ENVS[1])
     assert s2["thinking_level"] == "high" and s2["max_output_tokens"] == 256 and s2["google_search"]
     assert ai_settings(ENVS[2])["thinking_level"] == "low"
+    # 模型名稱去掉 models/ 前綴；token 數只接受整串數字（打錯字用預設值）
+    s3 = ai_settings(ENVS[3])
+    assert s3["model"] == "gemini-3.5-flash" and s3["max_output_tokens"] == 8192
+    assert ai_settings(ENVS[4])["model"] == "gemini-3.8-flash" and ai_settings(ENVS[4])["max_output_tokens"] == 2048
+    assert [ai_settings(e)["max_output_tokens"] for e in ENVS[5:]] == [8192, 8192, 65536]
     req = interaction_request("sys", "hi", {"type": "object"}, s2)
     assert req["response_format"]["schema"] == {"type": "object"} and req["tools"] == [{"type": "google_search"}]
     assert "tools" not in interaction_request("sys", "hi", {}, s)
@@ -66,7 +76,7 @@ def test_coach_with_gemini(monkeypatch):
     out = coach("帶阿嬤吃飯，不要辣", rec)
     assert out["source"] == "gemini" and out["summary"] == "幫你挑好了"
     assert [p["dish"]["id"] for p in out["picks"]] == [first]  # 不在候選裡的 id 會被丟掉
-    assert fake.requests[0]["model"] == "models/gemini-3.8-flash"
+    assert fake.requests[0]["model"] == "gemini-3.8-flash"
 
 
 def test_coach_falls_back_to_rules(monkeypatch):
@@ -89,4 +99,4 @@ def test_worker_gemini_matches_python():
     assert js["text"] == output_text(INTERACTION)
     assert js["ask"] == {"a": 1}
     assert js["seen"] == {"url": "https://generativelanguage.googleapis.com/v1beta/interactions", "key": "k",
-                          "model": "models/gemini-3.8-flash"}
+                          "model": "gemini-3.8-flash"}

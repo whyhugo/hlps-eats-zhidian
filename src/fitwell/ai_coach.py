@@ -10,7 +10,7 @@
 
 設定（.env 或 Cloudflare Worker 的變數，都可以不填）：
     GEMINI_API_KEY              Gemini API 金鑰（祕密值）
-    FITWELL_AI_MODEL            模型，預設 models/gemini-3.8-flash
+    FITWELL_AI_MODEL            模型，預設 gemini-3.8-flash（寫成 models/gemini-3.8-flash 也可以，會自動去掉前綴）
     FITWELL_AI_THINKING         思考程度 minimal／low／medium／high，預設 low（越高越慢越貴）
     FITWELL_AI_MAX_TOKENS       每次回覆最多幾個 token（含思考），預設 8192
     FITWELL_AI_GOOGLE_SEARCH    1 = 允許模型用 Google 搜尋補充說明（會多收費），預設 0
@@ -28,7 +28,7 @@ from .recommend import Query, Recommender
 
 log = logging.getLogger("fitwell.ai")
 
-DEFAULT_MODEL = "models/gemini-3.8-flash"
+DEFAULT_MODEL = "gemini-3.8-flash"  # Interactions API 的模型名稱沒有 models/ 前綴
 
 try:
     from google import genai
@@ -42,12 +42,12 @@ def ai_settings(env: dict[str, str] | None = None) -> dict[str, Any]:
     thinking = (env.get("FITWELL_AI_THINKING") or "low").lower()
     if thinking not in ("minimal", "low", "medium", "high"):
         thinking = "low"
-    try:
-        max_tokens = max(256, min(65536, int(env.get("FITWELL_AI_MAX_TOKENS") or 8192)))
-    except ValueError:
-        max_tokens = 8192
+    raw = (env.get("FITWELL_AI_MAX_TOKENS") or "").strip()
+    # 只接受整串都是數字（和 JS 版一樣嚴格；打錯字就用預設值，避免意外放大花費）
+    max_tokens = max(256, min(65536, int(raw))) if re.fullmatch(r"[0-9]+", raw) else 8192
+    model = (env.get("FITWELL_AI_MODEL") or "").strip().removeprefix("models/") or DEFAULT_MODEL
     return {
-        "model": env.get("FITWELL_AI_MODEL") or DEFAULT_MODEL,
+        "model": model,
         "thinking_level": thinking,
         "max_output_tokens": max_tokens,
         "google_search": (env.get("FITWELL_AI_GOOGLE_SEARCH") or "0").lower() in ("1", "true", "yes"),
