@@ -18,7 +18,7 @@
 | 硬體 | micro:bit、LED、按鈕、旋鈕、伺服馬達、蜂鳴器 | 讀取輸入、顯示結果 |
 | 電腦 | Python（FastAPI）`fitwell serve` | 序列埠橋接、機台狀態、評分、推薦、AI、網頁 API |
 | 瀏覽器 | `web/`（HTML／CSS／JS，免編譯） | 展示畫面、虛擬 micro:bit |
-| 雲端（選用） | Claude API | 自然語言需求理解與推薦說明 |
+| 雲端（選用） | Gemini API（Interactions） | 自然語言需求理解與推薦說明 |
 | 資料 | CSV、JSON 設定檔 | 菜單、公式、零件設定 |
 
 ## 3. 推薦演算法
@@ -134,7 +134,7 @@ USB 序列埠，115200 baud，一行一個指令（`\n` 結尾）。網頁上的
 | `recommend.py` | 篩選、排序、前 N 名、放寬建議、健康百分比、餐盤評估 |
 | `config.py` | 讀取 `scoring.json`、`hardware.json`，轉成 CFG 指令 |
 | `serial_bridge.py` | 序列埠偵測、握手、讀寫、當機偵測與自動重開 |
-| `ai_coach.py` | 需求解析（Claude 或關鍵字規則）、從候選菜中挑選並說明 |
+| `ai_coach.py` | 需求解析（Gemini 或關鍵字規則）、從候選菜中挑選並說明 |
 | `server.py` | FastAPI：REST API、SSE 事件、機台狀態、micro:bit 指令處理、定期重送設定 |
 | `cli.py` | `serve`、`build-data`、`recommend`、`monitor`、`ports` |
 
@@ -175,7 +175,7 @@ USB 序列埠，115200 baud，一行一個指令（`\n` 結尾）。網頁上的
 
 | 功能 | 做法 |
 |---|---|
-| 下一餐建議 | 把當天已吃的餐盤與剩餘額度交給 Claude，限定只能從 `dishes.csv` 挑選，補足當天缺少的（例如蛋白質不足、鹽分已超標） |
+| 下一餐建議 | 把當天已吃的餐盤與剩餘額度交給 Gemini，限定只能從 `dishes.csv` 挑選，補足當天缺少的（例如蛋白質不足、鹽分已超標） |
 | 每日回顧 | 晚上自動產生一段給學生看的回饋與明天的建議 |
 | 自動標註新菜 | 輸入新餐廳菜名，AI 建議健康標籤與加權，人工確認後加入資料庫，換一家百貨公司也能快速建立資料 |
 | 語音點餐 | 瀏覽器語音辨識 → AI 小教練，方便長輩使用 |

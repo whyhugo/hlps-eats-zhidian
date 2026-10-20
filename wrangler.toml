@@ -3,17 +3,25 @@
 name = "hlps-eats-zhidian"
 main = "worker/index.js"
 compatibility_date = "2025-09-01"
+# 部署時保留在 Cloudflare 後台設定的變數（例如 FITWELL_AI_THINKING），不要被清掉
+keep_vars = true
 
 [assets]
 directory = "./web"
 binding = "ASSETS"
 
-[vars]
-# 想換模型時改這裡
-FITWELL_AI_MODEL = "claude-opus-5-5"
+# AI 小教練（Gemini）的設定不寫在這裡，請到 Cloudflare 後台 Worker → Settings → Variables and Secrets：
+#   GEMINI_API_KEY（Secret，必要）、FITWELL_AI_MODEL、FITWELL_AI_THINKING、FITWELL_AI_MAX_TOKENS、FITWELL_AI_GOOGLE_SEARCH
+#   寫在這裡的 [vars] 每次部署都會蓋掉後台的設定，所以留空。說明見 worker/gemini.js。
 
 # AI 小教練限流：同一個 IP 每 60 秒最多 10 次
 [[ratelimits]]
 name = "COACH_LIMITER"
 namespace_id = "1001"
+simple = { limit = 10, period = 60 }
+
+# 預覽版本（PR／非 main 分支，由 `wrangler preview` 部署）用自己的限流計數，不和正式網站共用
+[[previews.ratelimits]]
+name = "COACH_LIMITER"
+namespace_id = "1002"
 simple = { limit = 10, period = 60 }

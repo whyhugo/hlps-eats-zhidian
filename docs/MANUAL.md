@@ -194,7 +194,7 @@ uv run fitwell serve
 |---|---|
 | 求籤推薦 | 選預算（順序同旋鈕：100以下→101–300→301–500→500以上→不限）、辣度（不辣→1～5→都可以）、主餐類型（可複選）→ 按「求籤」：籤筒搖動，三支籤依序飛出並蓋上燈號朱印；上方顯示每一步篩選剩幾道；點分數旁的計算機圖示看加權拆解；不足 3 道時提示可放寬的條件。重新整理網頁會保留上一次結果 |
 | 我的餐盤 | 把多道菜組成一餐，用**目前模式**計算平均分數、健康指數與燈號；切換模式會自動重新評估。2 道以上高油、高鹽或多澱粉、健身模式缺蛋白質、養生模式太辣時提出警告。結果同步到 micro:bit 燈號與指針。餐盤存在這台電腦的瀏覽器裡 |
-| AI 小教練 | 用一句話描述需求（例：「帶阿嬤吃飯，要清淡不辣」），轉成篩選條件並從菜單中挑選、說明理由。設定 `ANTHROPIC_API_KEY` 時使用 Claude，否則使用關鍵字規則；兩者都只會推薦資料庫裡的菜 |
+| AI 小教練 | 用一句話描述需求（例：「帶阿嬤吃飯，要清淡不辣」），轉成篩選條件並從菜單中挑選、說明理由。設定 `GEMINI_API_KEY` 時使用 Gemini，否則使用關鍵字規則；兩者都只會推薦資料庫裡的菜 |
 | 全部菜單 | 所有菜色與分數，可搜尋、切換公式（健身 v1／v2、養生）比較排名；切換模式時自動換成該模式的公式 |
 | 怎麼運作 | 流程圖、公式（滑過 ⓘ 看公式說明）、資料檢查報告 |
 
@@ -208,7 +208,7 @@ uv run fitwell serve
 |---|---|---|
 | `config/hardware.json` | `use_budget_knob`、`use_spicy_knob`、`buzzer`（passive／active／off）、`beep_ms`（每聲毫秒，30～500，越長越響）、`servo_reverse` | 重開 `fitwell serve`；電腦會自動送到 micro:bit，**不用重新燒錄** |
 | `config/scoring.json` | 加權公式、使用中的公式、燈號門檻、預設條件、排除類型 | 重開 `fitwell serve` |
-| `.env` | `FITWELL_PORT`、`FITWELL_HOST`、`FITWELL_SERIAL_PORT`、`FITWELL_NO_SERIAL`、`ANTHROPIC_API_KEY` | 重開 `fitwell serve` |
+| `.env` | `FITWELL_PORT`、`FITWELL_HOST`、`FITWELL_SERIAL_PORT`、`FITWELL_NO_SERIAL`、`GEMINI_API_KEY` 與 AI 設定（見 12.6） | 重開 `fitwell serve` |
 
 ## 8. 更新菜單資料
 
@@ -325,7 +325,7 @@ AI 金鑰放在 `.dev.vars`（格式同 `.env`，已加入 `.gitignore`）。
 
 ### 12.5 需要在 Cloudflare 後台操作的步驟
 
-以下步驟要用你的 Cloudflare、Anthropic 帳號登入操作，程式沒辦法代勞：
+以下步驟要用你的 Cloudflare、Google 帳號登入操作，程式沒辦法代勞：
 
 1. **建立 Worker 專案（必要）**
    Cloudflare 後台 → **Workers & Pages** → **Create** → **Import a repository** → 授權 GitHub → 選 `whyhugo/hlps-eats-zhidian`。
@@ -338,12 +338,13 @@ AI 金鑰放在 `.dev.vars`（格式同 `.env`，已加入 `.gitignore`）。
 
 2. **設定 AI 金鑰（要用 AI 小教練才需要）**
    Worker → **Settings** → **Variables and Secrets** → **Add** → 類型選 **Secret**：
-   - `ANTHROPIC_API_KEY` = 你的 Anthropic API 金鑰（建議另外建一把專用金鑰）
+   - `GEMINI_API_KEY` = 你的 Gemini API 金鑰（到 https://aistudio.google.com/apikey 建立，建議另外建一把專用金鑰）
 
-   儲存後會立即生效，不用重新部署。
+   儲存後會立即生效，不用重新部署。其他 AI 設定（模型、思考程度等）見 12.6，不設定就用預設值。
+   以前設定過的 `ANTHROPIC_API_KEY` 已經用不到，可以刪除。
 
-3. **Anthropic 花費上限（強烈建議）**
-   https://console.anthropic.com → **Settings** → **Limits**，設定每月花費上限。程式已限制同一 IP 每分鐘 10 次，但網址公開後仍可能被大量使用。
+3. **Gemini 花費上限（強烈建議）**
+   到 Google AI Studio 或 Google Cloud 主控台的帳單設定，替這把金鑰所屬的專案設定預算提醒或花費上限。程式已限制同一 IP 每分鐘 10 次，但網址公開後仍可能被大量使用。
 
 4. **Turnstile 人機驗證（建議）**
    Cloudflare 後台 → **Turnstile** → **Add widget**：
@@ -363,3 +364,18 @@ AI 金鑰放在 `.dev.vars`（格式同 `.env`，已加入 `.gitignore`）。
 6. **Zero Trust Access（通常不需要）**
    只有想限制「特定帳號才能開網站」時才設定：Zero Trust → **Access** → **Applications** → 新增 Self-hosted，網域填 Worker 網址，政策選 Email 一次性密碼。
    設定後評審、參觀者也要登入才能使用，所以公開展示時不建議開啟。
+
+### 12.6 AI 小教練設定
+
+電腦版寫在 `.env`；線上版到 Worker → **Settings** → **Variables and Secrets** 新增（金鑰選 Secret，其他選 Text）。只有金鑰是必要的，其他不填就用預設值，改了立即生效、不用改程式。
+
+| 變數 | 預設 | 說明 |
+|---|---|---|
+| `GEMINI_API_KEY` | （無） | Gemini API 金鑰。沒設定時 AI 小教練改用關鍵字規則 |
+| `FITWELL_AI_MODEL` | `gemini-3.8-flash` | 使用的模型（寫成 `models/…` 也可以，會自動去掉前綴） |
+| `FITWELL_AI_THINKING` | `low` | 思考程度：`minimal`／`low`／`medium`／`high`。越高回答越周到，但越慢越貴；挑菜這種任務 `low` 就夠 |
+| `FITWELL_AI_MAX_TOKENS` | `8192` | 每次回覆最多幾個 token（含思考），用來限制單次花費 |
+| `FITWELL_AI_GOOGLE_SEARCH` | `0` | 設成 `1` 讓模型可以用 Google 搜尋補充說明（會多收費）。推薦只會從我們的菜單挑，通常不需要 |
+
+`wrangler.toml` 設了 `keep_vars = true`，每次推上 GitHub 重新部署時，後台設定的變數不會被清掉。
+

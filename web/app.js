@@ -205,7 +205,7 @@ function renderStatus(s) {
   mb.setAttribute("aria-label", mbText.replace(/<br>/g, " "));
   const ai = $("#ai-status");
   ai.className = "stat " + (s.ai ? "on" : "off");
-  const aiText = s.ai ? "AI 小教練已連線（Claude）" : "AI 小教練使用關鍵字規則版（未連上 AI）";
+  const aiText = s.ai ? "AI 小教練已連線（Gemini）" : "AI 小教練使用關鍵字規則版（未連上 AI）";
   $("#ai-tip").textContent = aiText;
   ai.setAttribute("aria-label", aiText);
 }
@@ -228,7 +228,7 @@ function renderSerialStatus(m, mb, s) {
   mb.setAttribute("aria-label", mbText.replace(/<br>/g, " "));
   const ai = $("#ai-status");
   ai.className = "stat " + (s.ai ? "on" : "off");
-  const aiText = s.ai ? "AI 小教練已連線（Claude）" : "AI 小教練使用關鍵字規則版";
+  const aiText = s.ai ? "AI 小教練已連線（Gemini）" : "AI 小教練使用關鍵字規則版";
   $("#ai-tip").textContent = aiText;
   ai.setAttribute("aria-label", aiText);
   icons();
@@ -434,7 +434,7 @@ async function askCoach(text) {
     const r = await api("/api/coach", { text, token });
     if (TURNSTILE_ID !== null) turnstile.reset(TURNSTILE_ID); // 每個驗證只能用一次
     COACH_PICKS = r.picks;
-    out.innerHTML = `<div class="coach-summary">${ic(r.source === "claude" ? "sparkles" : "search")}<span>${esc(r.summary)}</span></div>`;
+    out.innerHTML = `<div class="coach-summary">${ic(r.source === "rules" ? "search" : "sparkles")}<span>${esc(r.summary)}</span></div>`;
     if (!r.picks.length) out.innerHTML += `<div class="hint">${ic("lightbulb")}<div>找不到符合的餐點。${r.result.hints.map(esc).join("；")}</div></div>`;
     const cards = document.createElement("div");
     cards.className = "slips";

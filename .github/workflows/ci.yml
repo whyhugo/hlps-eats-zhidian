@@ -1,0 +1,47 @@
+# CI：每個 PR 和推到 main 時自動檢查（不部署；部署由 Cloudflare Workers Builds 在 main 上執行）
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10.3.0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: 安裝 Python 套件
+        run: uv sync --all-extras
+
+      - name: 安裝 Node 套件（wrangler）
+        run: npm ci
+
+      # 推薦引擎、AI 小教練、伺服器、JS 與 Python 結果一致、web/data/bundle.json 是否過期
+      - name: 自動測試
+        run: uv run pytest -q
+
+      # 改了 main.py 或 hardware.json 的 pins 卻忘了重新產生 .hex
+      - name: 檢查 micro:bit 韌體是最新的
+        run: uv run python scripts/build_microbit_hex.py --check
+
+      # Worker 能不能打包（不需要 Cloudflare 帳號）
+      - name: 檢查 Cloudflare Worker 可以部署
+        run: npx wrangler deploy --dry-run --outdir "$RUNNER_TEMP/worker"

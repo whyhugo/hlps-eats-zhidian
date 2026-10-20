@@ -1,9 +1,10 @@
 // AI 小教練（Cloudflare Worker）— 和 src/fitwell/ai_coach.py 的流程相同：
-//   1. Claude 把一句話轉成篩選條件  2. 推薦引擎算候選  3. Claude 從候選中挑 3 道並說明
+//   1. Gemini 把一句話轉成篩選條件  2. 推薦引擎算候選  3. Gemini 從候選中挑 3 道並說明
 // API 金鑰只存在 Cloudflare 的環境變數（Secret），不會出現在網頁裡。
 // 任何一步失敗都改用規則版，網頁一定有結果。
 import "../web/engine.js";
 import bundle from "../web/data/bundle.json";
+import { askJSON } from "./gemini.js";
 
 const E = globalThis.FitwellEngine;
 const rec = new E.Recommender(bundle.dishes, bundle.config);
@@ -40,30 +41,6 @@ const PICK_SCHEMA = {
 
 const json = (data, status = 200) => Response.json(data, { status, headers: { "Cache-Control": "no-store" } });
 
-async function askJSON(env, system, user, schema) {
-  const r = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": env.ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-      "anthropic-beta": "server-side-fallback-2026-07-01",
-    },
-    body: JSON.stringify({
-      model: env.FITWELL_AI_MODEL || "claude-opus-5-5",
-      max_tokens: 4000,
-      fallbacks: "default",
-      output_config: { effort: "low", format: { type: "json_schema", schema } },
-      system,
-      messages: [{ role: "user", content: user }],
-    }),
-  });
-  if (!r.ok) throw new Error(`Claude API ${r.status}: ${(await r.text()).slice(0, 200)}`);
-  const resp = await r.json();
-  if (resp.stop_reason === "refusal") return null;
-  return JSON.parse(resp.content.filter((b) => b.type === "text").map((b) => b.text).join(""));
-}
-
 async function verifyTurnstile(env, token, ip) {
   if (!env.TURNSTILE_SECRET_KEY) return true; // 沒設定就不檢查
   if (!token) return false;
@@ -79,7 +56,7 @@ export async function handleCoach(request, env) {
   const body = await request.json().catch(() => ({}));
   const text = String(body.text || "").trim().slice(0, 300);
   if (!text) return json({ detail: "請輸入想吃什麼" }, 400);
-  if (!env.ANTHROPIC_API_KEY) return json({ detail: "這個網站沒有開啟 AI" }, 503);
+  if (!env.GEMINI_API_KEY) return json({ detail: "這個網站沒有開啟 AI" }, 503);
   if (!(await verifyTurnstile(env, body.token, request.headers.get("CF-Connecting-IP")))) {
     return json({ detail: "人機驗證沒有通過，請重新整理再試" }, 403);
   }
@@ -107,7 +84,7 @@ export async function handleCoach(request, env) {
         main_types: parsed.main_types.filter((t) => ALL_TYPES.includes(t)),
       };
       reasons = ["由 AI 理解你的需求"];
-      source = "claude";
+      source = "gemini";
     }
   } catch (e) {
     console.warn("AI 解析失敗，改用規則版", e.message);

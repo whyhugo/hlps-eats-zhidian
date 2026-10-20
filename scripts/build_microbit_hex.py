@@ -1,7 +1,8 @@
 """產生 micro:bit V1 用的 .hex（MicroPython v1.0.1，記憶體比網頁版多）。
 腳位依 config/hardware.json 的 pins 寫進程式裡；改了腳位就重新執行一次。
 
-    uv run python scripts/build_microbit_hex.py
+    uv run python scripts/build_microbit_hex.py           產生並覆蓋 fitwell-microbit-v1.hex
+    uv run python scripts/build_microbit_hex.py --check   只檢查 .hex 是不是最新的（CI 用）
 
 V1 只有 16KB 記憶體，連「把程式編譯起來」都會不夠（MemoryError）。
 所以打包前用 python-minifier 拿掉註解、把變數名稱縮短（省下存名稱的記憶體）；
@@ -43,7 +44,7 @@ def with_pins(code: str) -> str:
     return code.replace(PIN_LINE, line)
 
 
-def main() -> None:
+def main() -> int:
     with tempfile.TemporaryDirectory() as d:
         src = Path(d) / "src.py"
         src.write_text(with_pins(SRC.read_text(encoding="utf-8")), encoding="utf-8")
@@ -53,8 +54,17 @@ def main() -> None:
     with tempfile.TemporaryDirectory() as d:
         script = Path(d) / "main.py"
         script.write_text(small, encoding="utf-8")
-        subprocess.run(["uv", "tool", "run", "--from", "uflash==1.3.0", "uflash", str(script), d], check=True)
-        OUT.write_bytes((Path(d) / "micropython.hex").read_bytes())
+        subprocess.run(["uv", "tool", "run", "--from", "uflash==1.3.0", "uflash", str(script), d], check=True,
+                       stdout=subprocess.DEVNULL)
+        hex_bytes = (Path(d) / "micropython.hex").read_bytes()
+    if "--check" in sys.argv:
+        if OUT.read_bytes() != hex_bytes:
+            print(f"❌ {OUT.relative_to(ROOT)} 不是最新的：改了 main.py 或 hardware.json 的 pins 後，"
+                  "請執行 uv run python scripts/build_microbit_hex.py 並提交")
+            return 1
+        print(f"✅ {OUT.relative_to(ROOT)} 是最新的")
+        return 0
+    OUT.write_bytes(hex_bytes)
     print(f"✅ 已產生 {OUT.relative_to(ROOT)}，把它拖進 MICROBIT 磁碟即可燒錄")
 
 
