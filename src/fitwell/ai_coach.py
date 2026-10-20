@@ -1,12 +1,19 @@
 """AI 營養小教練（選用功能）。
 
 使用者用一句話描述需求（例如「我剛跑完步，想吃清淡一點、300 元以內」），
-1. 先把句子轉成篩選條件（有 API 金鑰時用 Claude，沒有時用關鍵字規則）
+1. 先把句子轉成篩選條件（有 API 金鑰時用 Gemini，沒有時用關鍵字規則）
 2. 用和按鈕一樣的推薦引擎算出候選菜
-3. 有 API 金鑰時，再請 Claude 從候選菜中挑選並用小學生聽得懂的話解釋
+3. 有 API 金鑰時，再請 Gemini 從候選菜中挑選並用小學生聽得懂的話解釋
 
 重點：AI 只能從「我們自己的資料庫」裡挑菜，不會自己編造餐點。
-沒有設定 ANTHROPIC_API_KEY 時，整個功能仍然可以用（規則版）。
+沒有設定 GEMINI_API_KEY 時，整個功能仍然可以用（規則版）。
+
+設定（.env 或 Cloudflare Worker 的變數，都可以不填）：
+    GEMINI_API_KEY              Gemini API 金鑰（祕密值）
+    FITWELL_AI_MODEL            模型，預設 models/gemini-3.8-flash
+    FITWELL_AI_THINKING         思考程度 minimal／low／medium／high，預設 low（越高越慢越貴）
+    FITWELL_AI_MAX_TOKENS       每次回覆最多幾個 token（含思考），預設 8192
+    FITWELL_AI_GOOGLE_SEARCH    1 = 允許模型用 Google 搜尋補充說明（會多收費），預設 0
 """
 
 from __future__ import annotations
@@ -21,16 +28,34 @@ from .recommend import Query, Recommender
 
 log = logging.getLogger("fitwell.ai")
 
-MODEL = os.environ.get("FITWELL_AI_MODEL", "claude-opus-5-5")
+DEFAULT_MODEL = "models/gemini-3.8-flash"
 
 try:
-    import anthropic
+    from google import genai
 except ImportError:  # pragma: no cover
-    anthropic = None
+    genai = None
+
+
+def ai_settings(env: dict[str, str] | None = None) -> dict[str, Any]:
+    """讀取 AI 設定（和 worker/coach.js 的 aiSettings 相同）。"""
+    env = os.environ if env is None else env
+    thinking = (env.get("FITWELL_AI_THINKING") or "low").lower()
+    if thinking not in ("minimal", "low", "medium", "high"):
+        thinking = "low"
+    try:
+        max_tokens = max(256, min(65536, int(env.get("FITWELL_AI_MAX_TOKENS") or 8192)))
+    except ValueError:
+        max_tokens = 8192
+    return {
+        "model": env.get("FITWELL_AI_MODEL") or DEFAULT_MODEL,
+        "thinking_level": thinking,
+        "max_output_tokens": max_tokens,
+        "google_search": (env.get("FITWELL_AI_GOOGLE_SEARCH") or "0").lower() in ("1", "true", "yes"),
+    }
 
 
 def ai_available() -> bool:
-    return anthropic is not None and bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
+    return genai is not None and bool(os.environ.get("GEMINI_API_KEY"))
 
 
 # ---------------- 規則版：關鍵字 → 條件 ----------------
@@ -78,7 +103,7 @@ def parse_rules(text: str) -> tuple[Query, list[str]]:
     return Query(mode=mode, budget=budget, max_spicy=max_spicy, main_types=types), reasons
 
 
-# ---------------- Claude 版 ----------------
+# ---------------- Gemini 版 ----------------
 
 PARSE_SCHEMA = {
     "type": "object",
@@ -111,21 +136,45 @@ PICK_SCHEMA = {
 }
 
 
+def interaction_request(system: str, user: str, schema: dict, settings: dict[str, Any]) -> dict[str, Any]:
+    """Gemini Interactions API 的請求內容：要求回傳符合 schema 的 JSON。"""
+    req: dict[str, Any] = {
+        "model": settings["model"],
+        "system_instruction": system,
+        "input": user,
+        "generation_config": {
+            "max_output_tokens": settings["max_output_tokens"],
+            "thinking_level": settings["thinking_level"],
+        },
+        "response_format": {"type": "text", "mime_type": "application/json", "schema": schema},
+        "response_mime_type": "application/json",
+    }
+    if settings["google_search"]:
+        req["tools"] = [{"type": "google_search"}]
+    return req
+
+
+def output_text(interaction: Any) -> str:
+    """從回應的 steps 取出模型最後輸出的文字（SDK 物件或 REST 的 dict 都可以）。"""
+    get = (lambda o, k: o.get(k)) if isinstance(interaction, dict) else getattr
+    for step in reversed(get(interaction, "steps") or []):
+        g = (lambda o, k: o.get(k)) if isinstance(step, dict) else getattr
+        if g(step, "type") == "model_output":
+            parts = g(step, "content") or []
+            return "".join(
+                (p.get("text") if isinstance(p, dict) else getattr(p, "text", None)) or "" for p in parts
+            )
+    return ""
+
+
 def _ask_json(client: Any, system: str, user: str, schema: dict) -> dict | None:
-    resp = client.beta.messages.create(
-        model=MODEL,
-        max_tokens=4000,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
-        system=system,
-        messages=[{"role": "user", "content": user}],
-    )
-    if resp.stop_reason == "refusal":
-        log.warning("Claude 拒絕回答：%s", getattr(resp, "stop_details", None))
+    interaction = client.interactions.create(**interaction_request(system, user, schema, ai_settings()))
+    status = getattr(interaction, "status", None)
+    if status not in (None, "completed"):
+        log.warning("Gemini 沒有完成回答：%s", status)
         return None
-    text = "".join(b.text for b in resp.content if b.type == "text")
-    return json.loads(text)
+    text = output_text(interaction)
+    return json.loads(text) if text else None
 
 
 def coach(text: str, rec: Recommender) -> dict[str, Any]:
@@ -137,7 +186,7 @@ def coach(text: str, rec: Recommender) -> dict[str, Any]:
 
     if ai_available():
         try:
-            client = anthropic.Anthropic()
+            client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
             all_types = sorted({d.main_type for d in rec.dishes})
             parsed = _ask_json(
                 client,
@@ -156,7 +205,7 @@ def coach(text: str, rec: Recommender) -> dict[str, Any]:
                     main_types=[t for t in parsed["main_types"] if t in all_types],
                 )
                 reasons = ["由 AI 理解你的需求"]
-                source = "claude"
+                source = "gemini"
         except Exception as e:
             log.warning("AI 解析失敗，改用規則版：%s", e)
 

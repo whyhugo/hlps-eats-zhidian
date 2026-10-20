@@ -310,7 +310,7 @@
       this.publish("state", st);
     }
 
-    // AI 小教練：Cloudflare 上有 /api/coach（Claude）就用，否則或失敗時用規則版
+    // AI 小教練：Cloudflare 上有 /api/coach（Gemini）就用，否則或失敗時用規則版
     async coach(text, token) {
       if (!text?.trim()) throw new Error("請輸入想吃什麼");
       let out = null;

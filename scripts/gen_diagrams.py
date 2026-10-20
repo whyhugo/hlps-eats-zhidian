@@ -122,7 +122,7 @@ def fig_system():
 
     # 雲端
     o.append(group(720, 440, 200, 150, "④ 雲端（選用）", C["muted"]))
-    o.append(box(738, 476, 164, 90, "Claude API", ["理解需求、挑菜解釋", "沒金鑰時改用規則版"], C["muted"]))
+    o.append(box(738, 476, 164, 90, "Gemini API", ["理解需求、挑菜解釋", "沒金鑰時改用規則版"], C["muted"]))
 
     # 資料層
     o.append(group(40, 620, 880, 150, "⑤ 資料與設定（檔案）", C["warn"]))
