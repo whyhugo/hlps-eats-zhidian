@@ -85,6 +85,10 @@ serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
 
 ### 2.2 看懂每一塊積木
 
+![積木程式的邏輯圖](images/diagrams/student_blocks_logic.svg)
+
+**為什麼要「當收到換行」？** 網頁送來的是 `G` 加上一個看不見的「換行」字元，就像打完一句話按 Enter。文字可能分好幾次才送到，micro:bit 看到換行，才知道「這一行完整了」，再把換行前的文字放進 `c`。如果改成「收到任何字就處理」，可能只收到一半就判斷，燈就會亮錯。網頁送燈號時一定要記得加換行，這也是 Prompt 5 特別寫「每個字母後面加換行」的原因。
+
 | 積木 | 作用 |
 |---|---|
 | 當啟動時 → 序列 重新導向至 USB、傳輸率 115200 | 讓 micro:bit 透過 USB 線和電腦講話，速度要和網頁一樣 |
