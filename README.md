@@ -37,6 +37,7 @@ uv run fitwell serve
 |---|---|
 | [docs/MANUAL.md](docs/MANUAL.md) | **操作手冊**：材料、安裝、接線、燒錄、啟動、使用、設定、展示、疑難排解 |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | **系統架構與原理**：架構圖、推薦演算法、資料管線、通訊協定、硬體設計、擴充方向 |
+| [docs/STUDENT_GUIDE.md](docs/STUDENT_GUIDE.md) | **學生實作說明書**：LED＋A／B 鍵簡化版，積木程式與分步驟 AI prompt |
 
 ## 專案結構
 

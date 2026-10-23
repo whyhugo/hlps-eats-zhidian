@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 560" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="14" fill="#1f2328">
+  <title>學生版積木程式的邏輯圖</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#1f2328"/></marker>
+  </defs>
+  <rect width="1020" height="560" fill="#fff"/>
+  <g stroke="#1f2328" stroke-width="1.4" fill="none">
+    <!-- 啟動 -->
+    <rect x="20" y="40" width="220" height="44" rx="22"/>
+    <rect x="20" y="110" width="220" height="150" rx="6"/>
+    <path d="M130 84V110" marker-end="url(#a)"/>
+    <!-- A -->
+    <rect x="270" y="40" width="220" height="44" rx="22"/>
+    <rect x="270" y="110" width="220" height="44" rx="6"/>
+    <rect x="270" y="180" width="220" height="44" rx="6"/>
+    <path d="M380 250 L440 280 L380 310 L320 280 Z"/>
+    <rect x="270" y="340" width="100" height="40" rx="6"/>
+    <rect x="390" y="340" width="100" height="40" rx="6"/>
+    <path d="M380 84V110M380 154V180M380 224V250" marker-end="url(#a)"/>
+    <path d="M320 280H320V340" marker-end="url(#a)"/>
+    <path d="M440 280H440V340" marker-end="url(#a)"/>
+    <!-- B -->
+    <rect x="520" y="40" width="200" height="44" rx="22"/>
+    <rect x="520" y="110" width="200" height="44" rx="6"/>
+    <rect x="520" y="180" width="200" height="44" rx="6"/>
+    <path d="M620 84V110M620 154V180" marker-end="url(#a)"/>
+    <!-- 收到換行 -->
+    <rect x="750" y="40" width="230" height="44" rx="22"/>
+    <rect x="750" y="110" width="230" height="44" rx="6"/>
+    <rect x="750" y="180" width="230" height="44" rx="6"/>
+    <path d="M865 250 L935 280 L865 310 L795 280 Z"/>
+    <path d="M865 84V110M865 154V180M865 224V250" marker-end="url(#a)"/>
+    <path d="M865 310V340" marker-end="url(#a)"/>
+    <path d="M795 280H762V420" marker-end="url(#a)"/>
+    <path d="M935 280H968V420" marker-end="url(#a)"/>
+    <rect x="820" y="340" width="90" height="40" rx="6"/>
+    <rect x="720" y="420" width="84" height="40" rx="6"/>
+    <rect x="926" y="420" width="70" height="40" rx="6"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="130" y="67" font-weight="700">當啟動時</text>
+    <text x="130" y="140">fitness ＝ true（健身）</text>
+    <text x="130" y="170">序列埠接到 USB</text>
+    <text x="130" y="200">傳輸率 115200</text>
+    <text x="130" y="230">點陣顯示 F</text>
+
+    <text x="380" y="67" font-weight="700">當按鈕 A 被按下</text>
+    <text x="380" y="137">fitness 反過來</text>
+    <text x="380" y="207">送出一行 "A"</text>
+    <text x="380" y="285">fitness？</text>
+    <text x="320" y="365">顯示 F</text>
+    <text x="440" y="365">顯示 W</text>
+    <text x="305" y="300" font-size="12" fill="#57606a">是</text>
+    <text x="455" y="300" font-size="12" fill="#57606a">否</text>
+
+    <text x="620" y="67" font-weight="700">當按鈕 B 被按下</text>
+    <text x="620" y="137">送出一行 "B"</text>
+    <text x="620" y="207">顯示箭頭 →</text>
+
+    <text x="865" y="60" font-weight="700">當收到「換行」</text>
+    <text x="865" y="77" font-size="12" fill="#57606a">（網頁送完一整行）</text>
+    <text x="865" y="137">c ＝ 換行前的文字</text>
+    <text x="865" y="207">三顆燈先全部關掉</text>
+    <text x="865" y="285">c 是什麼？</text>
+    <text x="865" y="365">G → P0 綠</text>
+    <text x="762" y="445">Y → P1 黃</text>
+    <text x="961" y="445">R → P2 紅</text>
+  </g>
+
+  <!-- 換行說明 -->
+  <rect x="20" y="490" width="960" height="54" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="40" y="512" font-weight="700">為什麼是「換行」？</text>
+  <text x="40" y="533">網頁送來的是 "G" ＋ 換行（\n）。文字可能分好幾次才到，micro:bit 等看到換行，才知道「這一行送完了」，再把換行前的 "G" 放進 c。</text>
+</svg>
