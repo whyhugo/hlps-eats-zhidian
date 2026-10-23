@@ -46,6 +46,10 @@ GOLDEN_TEXTS = [
     "想吃海鮮，養生一點，不要辣",
     "100 元以內有什麼健康的",
     "我想吃辣的麵",
+    "Just finished a workout, want high protein under 300",
+    "Taking grandma out, something light and not spicy",
+    "Spicy seafood noodle soup, cheap please",
+    "I want chicken or beef rice under NT$500",
 ]
 
 
@@ -71,6 +75,7 @@ def _summary(r: dict[str, Any]) -> dict[str, Any]:
         "candidates": r["candidates"],
         "steps": r["steps"],
         "hints": r["hints"],
+        "hint_codes": r["hint_codes"],
         "formula_id": r["formula_id"],
         "formula_text": r["formula_text"],
     }
@@ -86,7 +91,7 @@ def build_golden() -> dict[str, Any]:
         for mode in ("fitness", "wellness"):
             t = rec.evaluate_tray(ids, mode)
             trays.append({"ids": ids, "mode": mode, "average": t["average"], "light": t["light"],
-                          "percent": t["percent"], "warnings": t["warnings"]})
+                          "percent": t["percent"], "warnings": t["warnings"], "warning_codes": t["warning_codes"]})
     texts = []
     for text in GOLDEN_TEXTS:
         q, reasons = parse_rules(text)

@@ -217,6 +217,7 @@ class TrayIn(BaseModel):
 
 class CoachIn(BaseModel):
     text: str
+    lang: str = "zh"  # 網頁目前的語言：zh／en（AI 用這個語言說明）
 
 
 class LineIn(BaseModel):
@@ -320,7 +321,7 @@ def tray(t: TrayIn):
 def ai_coach(c: CoachIn):
     if not c.text.strip():
         raise HTTPException(400, "請輸入想吃什麼")
-    out = coach(c.text, app_state.rec)
+    out = coach(c.text, app_state.rec, lang=c.lang)
     if out["picks"]:
         app_state.send_light(out["result"]["light"], len(out["picks"]), out["result"]["percent"])
     return out

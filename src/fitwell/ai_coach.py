@@ -60,10 +60,12 @@ def ai_available() -> bool:
 
 # ---------------- 規則版：關鍵字 → 條件 ----------------
 
+# 中文和英文關鍵字都比對（英文先轉小寫）；改這裡要一起改 web/engine.js 的 parseRules
+UNDER = r"(under|below|within|less than|up to|max)\s*(nt\$|\$)?\s*"
 PRICE_WORDS = [
-    (r"(100|一百)\s*(元|塊)?\s*(以下|以內|內)|便宜", "100以下"),
-    (r"(300|三百)\s*(元|塊)?\s*(以下|以內|內)", "101-300"),
-    (r"(500|五百)\s*(元|塊)?\s*(以下|以內|內)", "301-500"),
+    (r"(100|一百)\s*(元|塊)?\s*(以下|以內|內)|便宜|" + UNDER + r"100\b|\bcheap", "100以下"),
+    (r"(300|三百)\s*(元|塊)?\s*(以下|以內|內)|" + UNDER + r"300\b", "101-300"),
+    (r"(500|五百)\s*(元|塊)?\s*(以下|以內|內)|" + UNDER + r"500\b", "301-500"),
 ]
 TYPE_WORDS = {
     "海鮮": "海鮮類", "魚": "海鮮類", "蝦": "海鮮類",
@@ -71,12 +73,21 @@ TYPE_WORDS = {
     "蔬菜": "蔬果類", "青菜": "蔬果類", "沙拉": "蔬果類", "素食": "蔬果類",
     "燉飯": "飯類", "炒飯": "飯類", "丼": "飯類", "飯糰": "飯類",
     "麵": "麵類", "湯": "湯類",
+    "seafood": "海鮮類", "fish": "海鮮類", "shrimp": "海鮮類",
+    "meat": "肉類", "beef": "肉類", "chicken": "肉類", "pork": "肉類",
+    "vegetable": "蔬果類", "veggie": "蔬果類", "salad": "蔬果類", "vegetarian": "蔬果類",
+    "rice": "飯類", "noodle": "麵類", "ramen": "麵類", "pasta": "麵類", "soup": "湯類",
 }
-FITNESS_WORDS = ["健身", "增肌", "運動", "重訓", "跑步", "跑完", "打球", "蛋白", "肌肉", "練"]
-WELLNESS_WORDS = ["養生", "清淡", "長輩", "阿嬤", "阿公", "爺爺", "奶奶", "腸胃", "低鹽", "少油", "血壓", "健康"]
+FITNESS_WORDS = ["健身", "增肌", "運動", "重訓", "跑步", "跑完", "打球", "蛋白", "肌肉", "練",
+                 "gym", "workout", "work out", "exercise", "muscle", "protein", "running", "training"]
+WELLNESS_WORDS = ["養生", "清淡", "長輩", "阿嬤", "阿公", "爺爺", "奶奶", "腸胃", "低鹽", "少油", "血壓", "健康",
+                  "light", "grandma", "grandpa", "elderly", "senior", "low salt", "low-salt", "healthy", "bland"]
+NO_SPICY = r"不(要|吃|能吃)?辣|怕辣|not spicy|no spic|non-spicy|mild"
+SPICY = r"辣|spicy"
 
 
 def parse_rules(text: str) -> tuple[Query, list[str]]:
+    text = text.lower()
     reasons = []
     f = sum(w in text for w in FITNESS_WORDS)
     w = sum(w in text for w in WELLNESS_WORDS)
@@ -89,10 +100,10 @@ def parse_rules(text: str) -> tuple[Query, list[str]]:
             reasons.append(f"預算 {b}")
             break
     max_spicy = None
-    if re.search(r"不(要|吃|能吃)?辣|怕辣", text):
+    if re.search(NO_SPICY, text):
         max_spicy = 0
         reasons.append("不吃辣")
-    elif "辣" in text:
+    elif re.search(SPICY, text):
         max_spicy = 5
         reasons.append("可以吃辣")
     elif mode == "wellness":
@@ -177,7 +188,17 @@ def _ask_json(client: Any, system: str, user: str, schema: dict) -> dict | None:
     return json.loads(text) if text else None
 
 
-def coach(text: str, rec: Recommender) -> dict[str, Any]:
+def pick_instruction(lang: str) -> str:
+    """請 AI 挑菜並說明的系統指示（和 worker/coach.js 相同）；lang=en 時用英文說明。"""
+    language = "簡單易懂的英文（English）" if lang == "en" else "親切易懂的繁體中文"
+    return (
+        "你是給學生和一般民眾用的營養小教練。只能從提供的候選餐點中挑選最多 3 道（用 id），"
+        f"每道用一句 30 字以內、{language}說明為什麼適合。不要編造營養數字（例如克數、卡路里），"
+        f"只根據標籤、烹調方式和分數說明。summary 用一句{language}回應使用者的需求。"
+    )
+
+
+def coach(text: str, rec: Recommender, lang: str = "zh") -> dict[str, Any]:
     """回傳 {source, query, reasons, result, picks, summary}。"""
     text = text.strip()[:300]
     q, reasons = parse_rules(text)
@@ -233,9 +254,7 @@ def coach(text: str, rec: Recommender) -> dict[str, Any]:
             ]
             out = _ask_json(
                 client,
-                "你是給學生和一般民眾用的營養小教練。只能從提供的候選餐點中挑選最多 3 道（用 id），"
-                "每道用一句 30 字以內、親切易懂的繁體中文說明為什麼適合。不要編造營養數字（例如克數、卡路里），"
-                "只根據標籤、烹調方式和分數說明。summary 用一句話回應使用者的需求。",
+                pick_instruction(lang),
                 f"使用者需求：{text}\n候選餐點（已依健康分數排序）：{json.dumps(cands, ensure_ascii=False)}",
                 PICK_SCHEMA,
             )

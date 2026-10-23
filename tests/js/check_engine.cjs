@@ -22,14 +22,14 @@ for (const g of golden.recommend) {
   const r = rec.recommend(g.query);
   check(`recommend ${JSON.stringify(g.query)}`, {
     ids: r.items.map((s) => s.dish.id), scores: r.items.map((s) => s.score), lights: r.items.map((s) => s.light),
-    light: r.light, percent: r.percent, candidates: r.candidates, steps: r.steps, hints: r.hints,
+    light: r.light, percent: r.percent, candidates: r.candidates, steps: r.steps, hints: r.hints, hint_codes: r.hint_codes,
     formula_id: r.formula_id, formula_text: r.formula_text,
   }, g.result);
 }
 for (const g of golden.tray) {
   const t = rec.evaluateTray(g.ids, g.mode);
-  check(`tray ${g.ids} ${g.mode}`, { average: t.average, light: t.light, percent: t.percent, warnings: t.warnings },
-    { average: g.average, light: g.light, percent: g.percent, warnings: g.warnings });
+  check(`tray ${g.ids} ${g.mode}`, { average: t.average, light: t.light, percent: t.percent, warnings: t.warnings, warning_codes: t.warning_codes },
+    { average: g.average, light: g.light, percent: g.percent, warnings: g.warnings, warning_codes: g.warning_codes });
 }
 for (const g of golden.parse) {
   const p = parseRules(g.text);

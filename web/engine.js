@@ -119,7 +119,7 @@
 
       const avg = items.length ? items.reduce((a, s) => a + s.score, 0) / items.length : 0;
       const light = items.length ? this.scorer.light(avg, fid) : "red";
-      const hints = items.length >= topN ? [] : this.relaxHints(q, scored, exclude);
+      const relax = items.length >= topN ? [] : this.relaxHints(q, scored, exclude);
       return {
         query: { ...q, top_n: topN },
         mode_label: MODES[q.mode],
@@ -132,7 +132,8 @@
         enough: items.length >= topN,
         candidates: pool.length,
         steps,
-        hints,
+        hints: relax.map(([text]) => text),
+        hint_codes: relax.map(([, code]) => code), // 和 hints 一一對應，給網頁翻譯用
       };
     }
 
@@ -140,22 +141,24 @@
       const fid = this.scorer.formulaId(mode, formula);
       const byId = new Map(this.dishes.map((d) => [d.id, d]));
       const picked = ids.filter((i) => byId.has(i)).map((i) => this.scorer.score(byId.get(i), fid));
-      if (!picked.length) return { items: [], average: 0, light: "red", percent: 0, warnings: ["餐盤是空的"] };
+      if (!picked.length) return { items: [], average: 0, light: "red", percent: 0, warnings: ["餐盤是空的"], warning_codes: [{ code: "empty" }] };
       const avg = picked.reduce((a, s) => a + s.score, 0) / picked.length;
       const has = (s, t) => s.dish.tags.includes(t);
       const nFat = picked.filter((s) => has(s, "高油")).length;
       const nSalt = picked.filter((s) => has(s, "高鹽")).length;
       const nStarch = picked.filter((s) => has(s, "多澱粉")).length;
       const warnings = [];
-      if (nFat >= 2) warnings.push(`有 ${nFat} 道高油餐點，油脂可能過量`);
-      if (nSalt >= 2) warnings.push(`有 ${nSalt} 道高鹽餐點，鈉含量偏高`);
-      if (nStarch >= 2) warnings.push(`有 ${nStarch} 道多澱粉餐點，澱粉偏多`);
-      if (mode === "fitness" && !picked.some((s) => has(s, "高蛋白質"))) warnings.push("健身模式建議至少一道高蛋白質餐點");
-      if (mode === "wellness" && picked.some((s) => s.dish.spicy_level >= 3)) warnings.push("養生模式建議避免太辣的餐點");
+      const codes = []; // 和 warnings 一一對應，給網頁翻譯用
+      const warn = (text, code) => { warnings.push(text); codes.push(code); };
+      if (nFat >= 2) warn(`有 ${nFat} 道高油餐點，油脂可能過量`, { code: "fat", n: nFat });
+      if (nSalt >= 2) warn(`有 ${nSalt} 道高鹽餐點，鈉含量偏高`, { code: "salt", n: nSalt });
+      if (nStarch >= 2) warn(`有 ${nStarch} 道多澱粉餐點，澱粉偏多`, { code: "starch", n: nStarch });
+      if (mode === "fitness" && !picked.some((s) => has(s, "高蛋白質"))) warn("健身模式建議至少一道高蛋白質餐點", { code: "protein" });
+      if (mode === "wellness" && picked.some((s) => s.dish.spicy_level >= 3)) warn("養生模式建議避免太辣的餐點", { code: "spicy" });
       let light = this.scorer.light(avg, fid);
       if (warnings.length >= 3) light = "red";
       else if (warnings.length >= 2 && light === "green") light = "yellow";
-      return { items: picked, average: pyRound(avg, 1), light, percent: this.percentOf(avg, fid), warnings, formula_id: fid };
+      return { items: picked, average: pyRound(avg, 1), light, percent: this.percentOf(avg, fid), warnings, warning_codes: codes, formula_id: fid };
     }
 
     // 分數換算成 0~100（在所有餐點分數中的位置），給伺服馬達指針用
@@ -183,30 +186,32 @@
       if (q.budget && q.budget !== pr[pr.length - 1]) {
         const nxt = pr[pr.indexOf(q.budget) + 1];
         const n = count({ budget: nxt });
-        if (n > 0) hints.push(`把預算提高到「${nxt}」可以找到 ${n} 道`);
+        if (n > 0) hints.push([`把預算提高到「${nxt}」可以找到 ${n} 道`, { code: "budget", value: nxt, n }]);
       }
       if (q.max_spicy != null && q.max_spicy < 5) {
         const n = count({ maxSpicy: q.max_spicy + 1 });
-        if (n > 0) hints.push(`可接受辣度放寬到 ${q.max_spicy + 1} 可以找到 ${n} 道`);
+        if (n > 0) hints.push([`可接受辣度放寬到 ${q.max_spicy + 1} 可以找到 ${n} 道`, { code: "spicy", value: q.max_spicy + 1, n }]);
       }
       if (q.main_types.length) {
         const n = count({ types: false });
-        if (n > 0) hints.push(`主餐類型改成「不限」可以找到 ${n} 道`);
+        if (n > 0) hints.push([`主餐類型改成「不限」可以找到 ${n} 道`, { code: "types", n }]);
       }
       if (q.restaurants.length) {
         const n = count({ rest: false });
-        if (n > 0) hints.push(`餐廳改成「不限」可以找到 ${n} 道`);
+        if (n > 0) hints.push([`餐廳改成「不限」可以找到 ${n} 道`, { code: "restaurants", n }]);
       }
-      if (!hints.length) hints.push("請換一個模式或放寬多個條件再試一次");
+      if (!hints.length) hints.push(["請換一個模式或放寬多個條件再試一次", { code: "none" }]);
       return hints;
     }
   }
 
   // ---------------- AI 小教練：規則版（關鍵字 → 條件） ----------------
+  // 中文和英文關鍵字都比對（英文先轉小寫）；改這裡要一起改 ai_coach.py 的 parse_rules
+  const UNDER = String.raw`(under|below|within|less than|up to|max)\s*(nt\$|\$)?\s*`;
   const PRICE_WORDS = [
-    [/(100|一百)\s*(元|塊)?\s*(以下|以內|內)|便宜/, "100以下"],
-    [/(300|三百)\s*(元|塊)?\s*(以下|以內|內)/, "101-300"],
-    [/(500|五百)\s*(元|塊)?\s*(以下|以內|內)/, "301-500"],
+    [new RegExp(String.raw`(100|一百)\s*(元|塊)?\s*(以下|以內|內)|便宜|` + UNDER + String.raw`100\b|\bcheap`), "100以下"],
+    [new RegExp(String.raw`(300|三百)\s*(元|塊)?\s*(以下|以內|內)|` + UNDER + String.raw`300\b`), "101-300"],
+    [new RegExp(String.raw`(500|五百)\s*(元|塊)?\s*(以下|以內|內)|` + UNDER + String.raw`500\b`), "301-500"],
   ];
   const TYPE_WORDS = {
     "海鮮": "海鮮類", "魚": "海鮮類", "蝦": "海鮮類",
@@ -214,11 +219,20 @@
     "蔬菜": "蔬果類", "青菜": "蔬果類", "沙拉": "蔬果類", "素食": "蔬果類",
     "燉飯": "飯類", "炒飯": "飯類", "丼": "飯類", "飯糰": "飯類",
     "麵": "麵類", "湯": "湯類",
+    seafood: "海鮮類", fish: "海鮮類", shrimp: "海鮮類",
+    meat: "肉類", beef: "肉類", chicken: "肉類", pork: "肉類",
+    vegetable: "蔬果類", veggie: "蔬果類", salad: "蔬果類", vegetarian: "蔬果類",
+    rice: "飯類", noodle: "麵類", ramen: "麵類", pasta: "麵類", soup: "湯類",
   };
-  const FITNESS_WORDS = ["健身", "增肌", "運動", "重訓", "跑步", "跑完", "打球", "蛋白", "肌肉", "練"];
-  const WELLNESS_WORDS = ["養生", "清淡", "長輩", "阿嬤", "阿公", "爺爺", "奶奶", "腸胃", "低鹽", "少油", "血壓", "健康"];
+  const FITNESS_WORDS = ["健身", "增肌", "運動", "重訓", "跑步", "跑完", "打球", "蛋白", "肌肉", "練",
+    "gym", "workout", "work out", "exercise", "muscle", "protein", "running", "training"];
+  const WELLNESS_WORDS = ["養生", "清淡", "長輩", "阿嬤", "阿公", "爺爺", "奶奶", "腸胃", "低鹽", "少油", "血壓", "健康",
+    "light", "grandma", "grandpa", "elderly", "senior", "low salt", "low-salt", "healthy", "bland"];
+  const NO_SPICY = /不(要|吃|能吃)?辣|怕辣|not spicy|no spic|non-spicy|mild/;
+  const SPICY = /辣|spicy/;
 
   function parseRules(text) {
+    text = text.toLowerCase();
     const reasons = [];
     const f = FITNESS_WORDS.filter((w) => text.includes(w)).length;
     const w = WELLNESS_WORDS.filter((x) => text.includes(x)).length;
@@ -229,8 +243,8 @@
       if (pat.test(text)) { budget = b; reasons.push(`預算 ${b}`); break; }
     }
     let maxSpicy = null;
-    if (/不(要|吃|能吃)?辣|怕辣/.test(text)) { maxSpicy = 0; reasons.push("不吃辣"); }
-    else if (text.includes("辣")) { maxSpicy = 5; reasons.push("可以吃辣"); }
+    if (NO_SPICY.test(text)) { maxSpicy = 0; reasons.push("不吃辣"); }
+    else if (SPICY.test(text)) { maxSpicy = 5; reasons.push("可以吃辣"); }
     else if (mode === "wellness") maxSpicy = 1;
     const types = [...new Set(Object.entries(TYPE_WORDS).filter(([k]) => text.includes(k)).map(([, t]) => t))].sort();
     if (types.length) reasons.push("想吃 " + types.join("、"));
