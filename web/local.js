@@ -285,7 +285,7 @@
           this.sendLight(res.light, null, res.percent);
           return clone(res);
         }
-        case "/api/coach": return clone(await this.coach(body.text, body.token));
+        case "/api/coach": return clone(await this.coach(body.text, body.token, body.lang));
         case "/api/microbit/simulate":
           this.onMicrobitLine(body.line);
           return clone(this.status());
@@ -311,12 +311,12 @@
     }
 
     // AI 小教練：Cloudflare 上有 /api/coach（Gemini）就用，否則或失敗時用規則版
-    async coach(text, token) {
+    async coach(text, token, lang) {
       if (!text?.trim()) throw new Error("請輸入想吃什麼");
       let out = null;
       if (this.cloud.ai) {
         try {
-          const r = await fetch("/api/coach", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, token }) });
+          const r = await fetch("/api/coach", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, token, lang }) });
           const j = await r.json();
           if (!r.ok) throw new Error(j.detail || r.statusText);
           out = j;
@@ -327,7 +327,7 @@
       }
       if (!out) {
         out = E.coachRules(text, this.rec);
-        if (note) out.summary = `（AI 暫時不能用：${note}，改用關鍵字判斷）${out.summary}`;
+        if (note) out.fallback_note = note; // 網頁依目前語言顯示「AI 暫時不能用」
       }
       if (out.picks.length) this.sendLight(out.result.light, out.picks.length, out.result.percent);
       return out;

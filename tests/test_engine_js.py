@@ -32,3 +32,12 @@ def test_js_engine_matches_python():
         pytest.skip("沒有安裝 Node.js，略過 JS 版比對")
     r = subprocess.run([*node, "tests/js/check_engine.cjs"], capture_output=True, text=True, cwd=BUNDLE.parents[2])
     assert r.returncode == 0, r.stderr or r.stdout
+
+
+def test_i18n_dictionary_complete():
+    """雙語字典：中英文 key 相同、網頁用到的 key 都存在、菜單詞彙都有英文。"""
+    node = _node()
+    if node is None:
+        pytest.skip("沒有安裝 Node.js，略過雙語字典檢查")
+    r = subprocess.run([*node, "tests/js/check_i18n.cjs"], capture_output=True, text=True, cwd=BUNDLE.parents[2])
+    assert r.returncode == 0, r.stderr or r.stdout

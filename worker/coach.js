@@ -39,6 +39,14 @@ const PICK_SCHEMA = {
   additionalProperties: false,
 };
 
+// 請 AI 挑菜並說明的系統指示（和 ai_coach.py 的 pick_instruction 相同）；lang=en 時用英文說明
+function pickInstruction(lang) {
+  const language = lang === "en" ? "簡單易懂的英文（English）" : "親切易懂的繁體中文";
+  return "你是給學生和一般民眾用的營養小教練。只能從提供的候選餐點中挑選最多 3 道（用 id），" +
+    `每道用一句 30 字以內、${language}說明為什麼適合。不要編造營養數字（例如克數、卡路里），` +
+    `只根據標籤、烹調方式和分數說明。summary 用一句${language}回應使用者的需求。`;
+}
+
 const json = (data, status = 200) => Response.json(data, { status, headers: { "Cache-Control": "no-store" } });
 
 async function verifyTurnstile(env, token, ip) {
@@ -103,9 +111,7 @@ export async function handleCoach(request, env) {
         烹調: s.dish.cooking, 辣度: s.dish.spicy_level, 標籤: s.dish.tags, 分數: s.score,
       }));
       const out = await askJSON(env,
-        "你是給學生和一般民眾用的營養小教練。只能從提供的候選餐點中挑選最多 3 道（用 id），" +
-        "每道用一句 30 字以內、親切易懂的繁體中文說明為什麼適合。不要編造營養數字（例如克數、卡路里），" +
-        "只根據標籤、烹調方式和分數說明。summary 用一句話回應使用者的需求。",
+        pickInstruction(body.lang === "en" ? "en" : "zh"),
         `使用者需求：${text}\n候選餐點（已依健康分數排序）：${JSON.stringify(cands)}`, PICK_SCHEMA);
       if (out) {
         const valid = new Set(result.items.map((s) => s.dish.id));

@@ -41,6 +41,7 @@ class Result:
     steps: list[dict[str, Any]]
     hints: list[str]
     percent: int = 0  # 推薦結果平均分數在所有餐點分數中的位置 0~100（給燈環、伺服馬達指針用）
+    hint_codes: list[dict[str, Any]] = field(default_factory=list)  # 和 hints 一一對應，給網頁翻譯用
 
     @property
     def enough(self) -> bool:
@@ -60,6 +61,7 @@ class Result:
             "candidates": self.candidates,
             "steps": self.steps,
             "hints": self.hints,
+            "hint_codes": self.hint_codes,
         }
 
 
@@ -126,7 +128,7 @@ class Recommender:
         steps.append({"step": f"取前 {top_n} 名", "remaining": len(items)})
 
         light = self._overall_light(items, fid)
-        hints = [] if len(items) >= top_n else self._relax_hints(q, scored, exclude, top_n)
+        relax = [] if len(items) >= top_n else self._relax_hints(q, scored, exclude, top_n)
 
         percent = self.percent_of(sum(s.score for s in items) / len(items), fid) if items else 0
 
@@ -140,7 +142,8 @@ class Recommender:
             light=light,
             candidates=len(pool),
             steps=steps,
-            hints=hints,
+            hints=[text for text, _ in relax],
+            hint_codes=[code for _, code in relax],
         )
 
     def evaluate_tray(self, dish_ids: list[int], mode: str, formula: str | None = None) -> dict[str, Any]:
@@ -149,22 +152,29 @@ class Recommender:
         by_id = {d.id: d for d in self.dishes}
         picked = [self.scorer.score(by_id[i], fid) for i in dish_ids if i in by_id]
         if not picked:
-            return {"items": [], "average": 0, "light": "red", "percent": 0, "warnings": ["餐盤是空的"]}
+            return {"items": [], "average": 0, "light": "red", "percent": 0, "warnings": ["餐盤是空的"],
+                    "warning_codes": [{"code": "empty"}]}
         avg = sum(s.score for s in picked) / len(picked)
         warnings = []
+        codes: list[dict[str, Any]] = []  # 和 warnings 一一對應，給網頁翻譯用
         n_fat = sum(1 for s in picked if "高油" in s.dish.tags)
         n_salt = sum(1 for s in picked if "高鹽" in s.dish.tags)
         n_starch = sum(1 for s in picked if "多澱粉" in s.dish.tags)
         if n_fat >= 2:
             warnings.append(f"有 {n_fat} 道高油餐點，油脂可能過量")
+            codes.append({"code": "fat", "n": n_fat})
         if n_salt >= 2:
             warnings.append(f"有 {n_salt} 道高鹽餐點，鈉含量偏高")
+            codes.append({"code": "salt", "n": n_salt})
         if n_starch >= 2:
             warnings.append(f"有 {n_starch} 道多澱粉餐點，澱粉偏多")
+            codes.append({"code": "starch", "n": n_starch})
         if mode == "fitness" and not any("高蛋白質" in s.dish.tags for s in picked):
             warnings.append("健身模式建議至少一道高蛋白質餐點")
+            codes.append({"code": "protein"})
         if mode == "wellness" and any(s.dish.spicy_level >= 3 for s in picked):
             warnings.append("養生模式建議避免太辣的餐點")
+            codes.append({"code": "spicy"})
         light = self.scorer.light(avg, fid)
         percent = self.percent_of(avg, fid)
         # 有兩個以上警告時，整餐最多黃燈；三個以上就是紅燈
@@ -178,6 +188,7 @@ class Recommender:
             "light": light,
             "percent": percent,
             "warnings": warnings,
+            "warning_codes": codes,
             "formula_id": fid,
         }
 
@@ -200,7 +211,9 @@ class Recommender:
         avg = sum(s.score for s in items) / len(items)
         return self.scorer.light(avg, fid)
 
-    def _relax_hints(self, q: Query, scored: list[Scored], exclude: list[str], top_n: int) -> list[str]:
+    def _relax_hints(
+        self, q: Query, scored: list[Scored], exclude: list[str], top_n: int
+    ) -> list[tuple[str, dict[str, Any]]]:
         """推薦不到足夠道數時，試著各自放寬一個條件，看能多出幾道。"""
 
         def count(budget=q.budget, max_spicy=q.max_spicy, types=True, rest=True) -> int:
@@ -221,19 +234,20 @@ class Recommender:
             nxt = self.price_ranges[self.price_ranges.index(q.budget) + 1]
             n = count(budget=nxt)
             if n > 0:
-                hints.append(f"把預算提高到「{nxt}」可以找到 {n} 道")
+                hints.append((f"把預算提高到「{nxt}」可以找到 {n} 道", {"code": "budget", "value": nxt, "n": n}))
         if q.max_spicy is not None and q.max_spicy < 5:
             n = count(max_spicy=q.max_spicy + 1)
             if n > 0:
-                hints.append(f"可接受辣度放寬到 {q.max_spicy + 1} 可以找到 {n} 道")
+                hints.append((f"可接受辣度放寬到 {q.max_spicy + 1} 可以找到 {n} 道",
+                              {"code": "spicy", "value": q.max_spicy + 1, "n": n}))
         if q.main_types:
             n = count(types=False)
             if n > 0:
-                hints.append(f"主餐類型改成「不限」可以找到 {n} 道")
+                hints.append((f"主餐類型改成「不限」可以找到 {n} 道", {"code": "types", "n": n}))
         if q.restaurants:
             n = count(rest=False)
             if n > 0:
-                hints.append(f"餐廳改成「不限」可以找到 {n} 道")
+                hints.append((f"餐廳改成「不限」可以找到 {n} 道", {"code": "restaurants", "n": n}))
         if not hints:
-            hints.append("請換一個模式或放寬多個條件再試一次")
+            hints.append(("請換一個模式或放寬多個條件再試一次", {"code": "none"}))
         return hints

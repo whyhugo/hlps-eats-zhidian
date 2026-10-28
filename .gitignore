@@ -35,3 +35,6 @@ docs/reference/
 # Cloudflare 本機測試的祕密值
 .dev.vars
 .wrangler/
+
+# 參賽文件（含比賽與學校資訊，不公開）
+contest/
